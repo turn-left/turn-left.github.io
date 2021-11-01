@@ -15,6 +15,19 @@
 - [Spring-缓存原理源码分析]()
 - [Spring-MVC核心流程及源码分析]()
 
-## SpringCloud 体系
+## SpringCloud (Alibaba) 体系
+#### eureka
+#### ribbon
+#### hystrix
+#### gateway
+#### config
+
+## 分布式系统
+#### 幂等性设计
+#### 分布式事务
+#### 分布式锁
+#### 全局ID解决方案
+#### 一致性hash
+#### 负载均衡
 
 ## UML
