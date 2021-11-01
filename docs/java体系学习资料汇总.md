@@ -38,3 +38,4 @@
 4. [小米信息部技术团队](https://xiaomi-info.github.io/)
 5. [叶良辰spring源码阅读笔记](https://yangzhiwen911.github.io/)
 6. [elastic中文csdn官方](https://elasticstack.blog.csdn.net/article/details/102728604)
+7. [jack's blogs](https://blog.csdn.net/luoyang_java/)
