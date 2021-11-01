@@ -8,7 +8,7 @@
 ## JVM & troubleshooting
   
 ## Spring Framework 核心
-- [2021/11/1 Spring-Bean的生命周期](docs/Spring-Bean的生命周期.md)
+- [Spring-Bean的生命周期](docs/Spring-Bean的生命周期.md)
 - [Spring-IOC原理源码分析]()
 - [Spring-AOP原理源码分析]()
 - [Spring-事务原理源码分析]()
