@@ -63,42 +63,42 @@
 
 ## [SpringCloud (Alibaba)](https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md)
 
-- eureka
+#### eureka
 
-- ribbon
+#### ribbon
 
-- hystrix
+#### hystrix
 
-- gateway
+#### gateway
 
-- config
+#### config
 
 ## 分布式系统
 
-- 幂等性设计
+#### 幂等性设计
 
-- 分布式事务
+#### 分布式事务
 
-- 分布式锁
+#### 分布式锁
 
-- 全局ID解决方案
+#### 全局ID解决方案
 
-- 一致性hash
+#### 一致性hash
 
-- 负载均衡
+#### 负载均衡
 
 ## 中间件
 
-- redis
-- kafka
-- mongo
-- zookeeper
-- elastic
+#### redis
+#### kafka
+#### mongo
+#### zookeeper
+#### elastic
 
 ## UML
 
-- 时序图
-- 类图
+#### 时序图
+#### 类图
 
 ## 分布式服务调用链路追踪系统
 
