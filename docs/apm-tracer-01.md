@@ -1,0 +1,4 @@
+- [谷歌dapper](https://bigbully.github.io/Dapper-translation/)
+- [dapper论文](https://github.com/AlphaWang/alpha-dapper-translation-zh)
+- [常见分布式链路追踪产品简介](https://www.jianshu.com/p/a22a4288c93b)
+- [还在用Zipkin分布式服务链路追踪？来试试这个吧！](http://yun.itheima.com/jishu/256.html)
