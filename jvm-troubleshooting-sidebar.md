@@ -1,0 +1,25 @@
+## JVM & troubleshooting
+
+- 运行时数据区
+- 类加载机制
+- 垃圾回收机制
+  - 引用计数
+  - 可达性分析
+  - 分代回收策略
+  - 垃圾收集器组合
+- JVM调优实践
+  - 基于吞吐量的优化
+  - 基于最大停顿时长
+  - JVM常用参数
+- troubleshooting技术
+  - jps
+  - jstack
+  - jstat
+  - jinfo
+  - jmap
+  - jconsole
+  - [arthas](https://arthas.aliyun.com/doc/)
+- 线上故障诊断思路
+  - 内存泄露
+  - 内存溢出
+  - 死锁
