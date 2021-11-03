@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build": "esbuild --bundle --minify --target=chrome70 --platform=browser --outdir=dist src/index.js",
-    "serve": "sirv . --dev"
+    "watch": "esbuild --watch --bundle --minify --target=chrome70 --platform=browser --outdir=dist src/index.js",
+    "serve": "sirv --dev ."
   },
   "author": "yuekcc",
   "license": "MIT",
@@ -44,6 +45,8 @@
     "prettier": "^2.4.0"
   },
   "dependencies": {
-    "marked": "^3.0.8"
+    "github-markdown-css": "^5.0.0",
+    "marked": "^3.0.8",
+    "minireset.css": "^0.0.7"
   }
 }
