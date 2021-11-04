@@ -1,7 +1,7 @@
 ## Spring Framework 核心
 
-- [java动态代理技术分析](docs/java动态代理技术分析.md)
-- [Spring-Bean的生命周期](docs/Spring-Bean的生命周期.md)
+- [java动态代理技术分析](docs/spring/java动态代理技术分析.md)
+- [Spring-Bean的生命周期](docs/spring/Spring-Bean的生命周期.md)
 - [Spring-IOC原理源码分析]()
 - [Spring-AOP原理源码分析]()
 - [Spring-事务原理源码分析]()

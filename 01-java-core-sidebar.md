@@ -9,7 +9,7 @@
 - IO体系
 - NIO
 - netty
-- [java体系学习资料](docs/java体系学习资料汇总.md)
+- [java体系学习资料](docs/java-core/java体系学习资料汇总.md)
 
 ## MySQL
 
