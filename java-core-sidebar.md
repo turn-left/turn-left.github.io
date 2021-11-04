@@ -1,8 +1,8 @@
-## [java 核心](https://docs.oracle.com/javase/8/docs/)
+## java 核心
 
 - [java体系学习资料](docs/java体系学习资料汇总.md)
 - 泛型
-- 反射  
+- 反射
 - 集合框架
 - Stream
 - IO体系
