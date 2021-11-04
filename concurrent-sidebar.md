@@ -4,8 +4,8 @@
 - synchronized
 - volatile
 - ThreadLocal
-- 原子操作以
 - CAS
+- 原子操作
 - 并发工具
 - 线程池原理
 - 显式锁

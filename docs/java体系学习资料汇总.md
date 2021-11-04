@@ -1,5 +1,9 @@
 ## java体系学习资料汇总
 
+### JAVA SE8 模块划分
+
+![avatar](/docs/imgs/javase8.png)
+
 ### JVM
 
 ### 并发编程
@@ -27,8 +31,6 @@
 ### UML
 
 ### 环境搭建
-
-1. [搭建github个人博客](https://zhuanlan.zhihu.com/p/28321740)
 
 ### 博主博客
 
