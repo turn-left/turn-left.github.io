@@ -1,8 +1,7 @@
 ## java 核心
 
 ***
-
-- [java体系学习资料](docs/java体系学习资料汇总.md)
+- [总览](docs/java-core/java核心总览.md)
 - 泛型
 - 反射
 - 集合框架
@@ -10,6 +9,7 @@
 - IO体系
 - NIO
 - netty
+- [java体系学习资料](docs/java体系学习资料汇总.md)
 
 ## MySQL
 
