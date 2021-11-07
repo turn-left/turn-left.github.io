@@ -1,0 +1,2 @@
+- [Java魔法类：Unsafe应用解析](https://tech.meituan.com/2019/02/14/talk-about-java-magic-class-unsafe.html)
+- [不可不说的Java“锁”事](https://tech.meituan.com/2018/11/15/java-lock.html)

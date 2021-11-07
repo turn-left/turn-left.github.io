@@ -2,3 +2,5 @@
 - [dapper论文](https://github.com/AlphaWang/alpha-dapper-translation-zh)
 - [常见分布式链路追踪产品简介](https://www.jianshu.com/p/a22a4288c93b)
 - [还在用Zipkin分布式服务链路追踪？来试试这个吧！](http://yun.itheima.com/jishu/256.html)
+- [Java动态追踪技术探究](https://tech.meituan.com/2019/02/28/java-dynamic-trace.html)
+- [深度剖析开源分布式监控CAT](https://tech.meituan.com/2018/11/01/cat-in-depth-java-application-monitoring.html)
