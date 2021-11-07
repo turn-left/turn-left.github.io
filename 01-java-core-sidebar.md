@@ -4,15 +4,20 @@
 
 ### 总览
 
-- [关于java8模块划分](docs/java-core/java核心总览.md)
-- [自动装箱与拆箱]()
+- [关于java8模块](docs/java-core/java核心总览.md)
 - [java体系学习资料](docs/java-core/java体系学习资料汇总.md)
+- 自动装箱与拆箱
+- 关于正则表达式
+- 关于字符串操作API及源码
+- 关于特殊字符转译的探讨
+- 有关日期操作API总结
+- 关于URL类
 
 ### 泛型
 
-- [泛型方法]()
-- [泛型擦除]()
-- [关于super与extends]()
+- 泛型方法
+- 泛型擦除
+- 关于super与extends
 
 ### 反射
 
