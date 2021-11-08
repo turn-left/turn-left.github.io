@@ -11,9 +11,9 @@ BeanDefinition表示Bean定义，BeanDefinition中存在很多属性用来描述
 
 在Spring中，我们经常会通过以下几种方式来定义Bean：
 
-1. <bean/>
-2. @Bean
-3. @Component(@Service,@Controller)
+1. <bean>标签
+2. @Bean注解
+3. @Component(@Service,@Controller)等注解
 
 这些，我们可以称之**申明式定义Bean**。
 
@@ -30,8 +30,6 @@ context.registerBeanDefinition("user", beanDefinition);
 System.out.println(context.getBean("user"));
 ```
 
-
-
 我们还可以通过BeanDefinition设置一个Bean的其他属性
 
 ```
@@ -44,11 +42,9 @@ beanDefinition.setLazyInit(true); // 设置懒加载
 
 ## BeanDefinitionReader
 
-
-
 接下来，我们来介绍几种在Spring源码中所提供的BeanDefinition读取器（BeanDefinitionReader），这些BeanDefinitionReader在我们使用Spring时用得少，但在Spring源码中用得多，相当于Spring源码的基础设施。
 
-### 
+###  
 
 ### AnnotatedBeanDefinitionReader
 
@@ -69,7 +65,7 @@ System.out.println(context.getBean("user"));
 
 ### XmlBeanDefinitionReader
 
-可以解析<bean/>标签
+可以解析<bean>标签
 
 ``` java
 AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -89,7 +85,7 @@ AnnotationConfigApplicationContext context = new AnnotationConfigApplicationCont
 context.refresh();
 
 ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(context);
-scanner.scan("com.zhouyu");
+scanner.scan("com.ethen");
 
 System.out.println(context.getBean("userService"));
 ```
@@ -108,11 +104,11 @@ public interface ApplicationContext extends EnvironmentCapable, ListableBeanFact
 }
 ```
 
+首先，在Java中，接口是可以**多继承**
+的，我们发现ApplicationContext继承了ListableBeanFactory和HierarchicalBeanFactory，而ListableBeanFactory和HierarchicalBeanFactory都继承至BeanFactory，所以我们可以认为ApplicationContext继承了BeanFactory，相当于苹果继承水果，宝马继承汽车一样，ApplicationContext也是BeanFactory的一种，拥有BeanFactory支持的所有功能，不过ApplicationContext比BeanFactory更加强大，ApplicationContext还基础了其他接口，也就表示ApplicationContext还拥有其他功能，比如MessageSource表示国际化，ApplicationEventPublisher表示事件发布，EnvironmentCapable表示获取环境变量，等等，关于ApplicationContext后面再详细讨论。
 
-
-首先，在Java中，接口是可以**多继承**的，我们发现ApplicationContext继承了ListableBeanFactory和HierarchicalBeanFactory，而ListableBeanFactory和HierarchicalBeanFactory都继承至BeanFactory，所以我们可以认为ApplicationContext继承了BeanFactory，相当于苹果继承水果，宝马继承汽车一样，ApplicationContext也是BeanFactory的一种，拥有BeanFactory支持的所有功能，不过ApplicationContext比BeanFactory更加强大，ApplicationContext还基础了其他接口，也就表示ApplicationContext还拥有其他功能，比如MessageSource表示国际化，ApplicationEventPublisher表示事件发布，EnvironmentCapable表示获取环境变量，等等，关于ApplicationContext后面再详细讨论。
-
-在Spring的源码实现中，当我们new一个ApplicationContext时，其底层会new一个BeanFactory出来，当使用ApplicationContext的某些方法时，比如getBean()，底层调用的是BeanFactory的getBean()方法。
+在Spring的源码实现中，当我们new一个ApplicationContext时，其底层会new一个BeanFactory出来，当使用ApplicationContext的某些方法时，比如getBean()
+，底层调用的是BeanFactory的getBean()方法。
 
 在Spring源码中，BeanFactory接口存在一个非常重要的实现类是：**DefaultListableBeanFactory，也是非常核心的。**具体重要性，随着后续课程会感受更深。
 
@@ -129,8 +125,6 @@ beanFactory.registerBeanDefinition("user", beanDefinition);
 System.out.println(beanFactory.getBean("user"));
 ```
 
-
-
 **DefaultListableBeanFactory是非常强大的，支持很多功能，可以通过查看DefaultListableBeanFactory的类继承实现结构来看**
 
 ![DefaultListableBeanFactory.png](/docs/spring/imgs/DefaultListableBeanFactory.png?ynotemdtimestamp=1636301839049#height=272&id=ln8oK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=544&originWidth=1279&originalType=binary&ratio=1&size=55904&status=done&style=none&width=639.5)
@@ -144,16 +138,21 @@ System.out.println(beanFactory.getBean("user"));
 3. BeanFactory：Bean工厂，可以根据某个bean的名字、或类型、或别名获取某个Bean对象
 4. SingletonBeanRegistry：可以直接注册、获取某个**单例**Bean
 5. SimpleAliasRegistry：它是一个类，实现了AliasRegistry接口中所定义的功能，支持别名功能
-6. ListableBeanFactory：在BeanFactory的基础上，增加了其他功能，可以获取所有BeanDefinition的beanNames，可以根据某个类型获取对应的beanNames，可以根据某个类型获取{类型：对应的Bean}的映射关系
+6.
+ListableBeanFactory：在BeanFactory的基础上，增加了其他功能，可以获取所有BeanDefinition的beanNames，可以根据某个类型获取对应的beanNames，可以根据某个类型获取{类型：对应的Bean}的映射关系
 7. HierarchicalBeanFactory：在BeanFactory的基础上，添加了获取父BeanFactory的功能
 8. DefaultSingletonBeanRegistry：它是一个类，实现了SingletonBeanRegistry接口，拥有了直接注册、获取某个**单例**Bean的功能
-9. ConfigurableBeanFactory：在HierarchicalBeanFactory和SingletonBeanRegistry的基础上，添加了设置父BeanFactory、类加载器（表示可以指定某个类加载器进行类的加载）、设置Spring EL表达式解析器（表示该BeanFactory可以解析EL表达式）、设置类型转化服务（表示该BeanFactory可以进行类型转化）、可以添加BeanPostProcessor（表示该BeanFactory支持Bean的后置处理器），可以合并BeanDefinition，可以销毁某个Bean等等功能
+9.
+ConfigurableBeanFactory：在HierarchicalBeanFactory和SingletonBeanRegistry的基础上，添加了设置父BeanFactory、类加载器（表示可以指定某个类加载器进行类的加载）、设置Spring
+EL表达式解析器（表示该BeanFactory可以解析EL表达式）、设置类型转化服务（表示该BeanFactory可以进行类型转化）、可以添加BeanPostProcessor（表示该BeanFactory支持Bean的后置处理器），可以合并BeanDefinition，可以销毁某个Bean等等功能
 10. FactoryBeanRegistrySupport：支持了FactoryBean的功能
 11. AutowireCapableBeanFactory：是直接继承了BeanFactory，在BeanFactory的基础上，支持在创建Bean的过程中能对Bean进行自动装配
-12. AbstractBeanFactory：实现了ConfigurableBeanFactory接口，继承了FactoryBeanRegistrySupport，这个BeanFactory的功能已经很全面了，但是不能自动装配和获取beanNames
+12.
+AbstractBeanFactory：实现了ConfigurableBeanFactory接口，继承了FactoryBeanRegistrySupport，这个BeanFactory的功能已经很全面了，但是不能自动装配和获取beanNames
 13. ConfigurableListableBeanFactory：继承了ListableBeanFactory、AutowireCapableBeanFactory、ConfigurableBeanFactory
 14. AbstractAutowireCapableBeanFactory：继承了AbstractBeanFactory，实现了AutowireCapableBeanFactory，拥有了自动装配的功能
-15. DefaultListableBeanFactory：继承了AbstractAutowireCapableBeanFactory，实现了ConfigurableListableBeanFactory接口和BeanDefinitionRegistry接口，所以DefaultListableBeanFactory的功能很强大
+15.
+DefaultListableBeanFactory：继承了AbstractAutowireCapableBeanFactory，实现了ConfigurableListableBeanFactory接口和BeanDefinitionRegistry接口，所以DefaultListableBeanFactory的功能很强大
 
 ## ApplicationContext
 
@@ -165,8 +164,6 @@ System.out.println(beanFactory.getBean("user"));
 4. EnvironmentCapable：可以获取运行时环境（没有设置运行时环境功能）
 5. ApplicationEventPublisher：拥有广播事件的功能（没有添加事件监听器的功能）
 6. MessageSource：拥有国际化功能
-
-
 
 具体的功能演示，后面会有。
 
@@ -181,15 +178,19 @@ System.out.println(beanFactory.getBean("user"));
 
 **这部分现在看不懂没关系，源码熟悉一点后回来再来看都可以。**
 
-1. ConfigurableApplicationContext：继承了ApplicationContext接口，增加了，添加事件监听器、添加BeanFactoryPostProcessor、设置Environment，获取ConfigurableListableBeanFactory等功能
+1.
+ConfigurableApplicationContext：继承了ApplicationContext接口，增加了，添加事件监听器、添加BeanFactoryPostProcessor、设置Environment，获取ConfigurableListableBeanFactory等功能
 2. AbstractApplicationContext：实现了ConfigurableApplicationContext接口
-3. GenericApplicationContext：继承了AbstractApplicationContext，实现了BeanDefinitionRegistry接口，拥有了所有ApplicationContext的功能，并且可以注册BeanDefinition，注意这个类中有一个属性(DefaultListableBeanFactory **beanFactory**)
+3.
+GenericApplicationContext：继承了AbstractApplicationContext，实现了BeanDefinitionRegistry接口，拥有了所有ApplicationContext的功能，并且可以注册BeanDefinition，注意这个类中有一个属性(
+DefaultListableBeanFactory **beanFactory**)
 4. AnnotationConfigRegistry：可以单独注册某个为类为BeanDefinition（可以处理该类上的**@Configuration注解**，已经可以处理**@Bean注解**），同时可以扫描
 5. AnnotationConfigApplicationContext：继承了GenericApplicationContext，实现了AnnotationConfigRegistry接口，拥有了以上所有的功能
 
 ### ClassPathXmlApplicationContext
 
-![ClassPathXmlApplicationContext.png](/docs/spring/imgs/ClassPathXmlApplicationContext.png?ynotemdtimestamp=1636301839049#height=237&id=TDJ6q&margin=%5Bobject%20Object%5D&name=image.png&originHeight=474&originWidth=1497&originalType=binary&ratio=1&size=44996&status=done&style=none&width=748.5) 它也是继承了AbstractApplicationContext，但是相对于AnnotationConfigApplicationContext而言，功能没有AnnotationConfigApplicationContext强大，比如不能注册BeanDefinition
+![ClassPathXmlApplicationContext.png](/docs/spring/imgs/ClassPathXmlApplicationContext.png?ynotemdtimestamp=1636301839049#height=237&id=TDJ6q&margin=%5Bobject%20Object%5D&name=image.png&originHeight=474&originWidth=1497&originalType=binary&ratio=1&size=44996&status=done&style=none&width=748.5)
+它也是继承了AbstractApplicationContext，但是相对于AnnotationConfigApplicationContext而言，功能没有AnnotationConfigApplicationContext强大，比如不能注册BeanDefinition
 
 ### 国际化
 
@@ -228,7 +229,7 @@ System.out.println(resource.contentLength());
 ```
 AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-Resource resource = context.getResource("file://D:\\IdeaProjects\\spring-framework-5.3.10\\tuling\\src\\main\\java\\com\\zhouyu\\service\\UserService.java");
+Resource resource = context.getResource("file://D:\\work2021\\in-depth-spring\\src\\main\\java\\com\\ethen\\service\\UserService.java");
 System.out.println(resource.contentLength());
 System.out.println(resource.getFilename());
 
@@ -244,7 +245,7 @@ System.out.println(resource2.getURL());
 还可以一次性获取多个：
 
 ```
-Resource[] resources = context.getResources("classpath:com/zhouyu/*.class");
+Resource[] resources = context.getResources("classpath:com/ethen/*.class");
 for (Resource resource : resources) {
 	System.out.println(resource.contentLength());
 	System.out.println(resource.getFilename());
@@ -273,7 +274,7 @@ System.out.println("=======");
 
 System.out.println(context.getEnvironment().getProperty("NO_PROXY"));
 System.out.println(context.getEnvironment().getProperty("sun.jnu.encoding"));
-System.out.println(context.getEnvironment().getProperty("zhouyu"));
+System.out.println(context.getEnvironment().getProperty("ethen"));
 ```
 
 注意，可以利用
@@ -438,8 +439,6 @@ public class A implements Ordered {
 }
 ```
 
-
-
 ```
 public class B implements Ordered {
 
@@ -522,7 +521,7 @@ BeanPostProcess表示Bena的后置处理器，我们可以定义一个或多个B
 
 ```
 @Component
-public class ZhouyuBeanPostProcessor implements BeanPostProcessor {
+public class EthenBeanPostProcessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -554,7 +553,7 @@ BeanFactoryPostProcessor表示Bean工厂的后置处理器，其实和BeanPostPr
 
 ```
 @Component
-public class ZhouyuBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+public class EthenBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
@@ -571,7 +570,7 @@ public class ZhouyuBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
 
 ```
 @Component
-public class ZhouyuFactoryBean implements FactoryBean {
+public class EthenFactoryBean implements FactoryBean {
 
 	@Override
 	public Object getObject() throws Exception {
@@ -595,10 +594,10 @@ public class ZhouyuFactoryBean implements FactoryBean {
 
 这两个Filter是Spring扫描过程中用来过滤的。ExcludeFilter表示**排除过滤器**，IncludeFilter表示**包含过滤器**。
 
-比如以下配置，表示扫描com.zhouyu这个包下面的所有类，但是排除UserService类，也就是就算它上面有@Component注解也不会成为Bean。
+比如以下配置，表示扫描com.ethen这个包下面的所有类，但是排除UserService类，也就是就算它上面有@Component注解也不会成为Bean。
 
 ```
-@ComponentScan(value = "com.zhouyu",
+@ComponentScan(value = "com.ethen",
 		excludeFilters = {@ComponentScan.Filter(
             	type = FilterType.ASSIGNABLE_TYPE, 
             	classes = UserService.class)}.)
@@ -609,15 +608,13 @@ public class AppConfig {
 再比如以下配置，就算UserService类上没有@Component注解，它也会被扫描成为一个Bean。
 
 ```
-@ComponentScan(value = "com.zhouyu",
+@ComponentScan(value = "com.ethen",
 		includeFilters = {@ComponentScan.Filter(
             	type = FilterType.ASSIGNABLE_TYPE, 
             	classes = UserService.class)})
 public class AppConfig {
 }
 ```
-
-
 
 FilterType分为：
 
@@ -626,8 +623,6 @@ FilterType分为：
 3. ASPECTJ：表示否是符合某个Aspectj表达式
 4. REGEX：表示是否符合某个正则表达式
 5. CUSTOM：自定义
-
-
 
 在Spring的扫描逻辑中，默认会添加一个AnnotationTypeFilter给includeFilters，表示默认情况下Spring扫描过程中会认为类上有@Component注解的就是Bean。
 
@@ -644,7 +639,7 @@ public class Test {
 		SimpleMetadataReaderFactory simpleMetadataReaderFactory = new SimpleMetadataReaderFactory();
 		
         // 构造一个MetadataReader
-        MetadataReader metadataReader = simpleMetadataReaderFactory.getMetadataReader("com.zhouyu.service.UserService");
+        MetadataReader metadataReader = simpleMetadataReaderFactory.getMetadataReader("com.ethen.service.UserService");
 		
         // 得到一个ClassMetadata，并获取了类名
         ClassMetadata classMetadata = metadataReader.getClassMetadata();
