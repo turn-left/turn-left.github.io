@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" class="borderbox">
-<head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>marknote</title>
-  <link rel="stylesheet" href="dist/index.css"/>
-</head>
-<body>
-<div class="top-nav f">
-  <div class="f-fixed sidebar-control">
-    <button>📙</button>
-  </div>
-  <div class="f-auto">
-    <a href="#"><h1 class="site-name">marknote</h1></a>
-  </div>
-  <div class="f-fixed links">
-    <!-- 顶部右则导航 -->
-    <a href="/#/docs/java-core/java核心总览.md?sidebar=01-java-core-sidebar.md">java-core</a>
-    <a href="/#/docs/concurrent/concurrent-01.md?sidebar=02-concurrent-sidebar.md">并发编程</a>
-    <a href="/#/docs/jvm-shoot/deploy-on-github.md?sidebar=03-jvm-troubleshooting-sidebar.md">JVM&troubleshooting</a>
-    <a href="/#/docs/spring/java动态代理技术分析.md?sidebar=04-spring-sidebar.md">Spring</a>
-    <a href="/#/docs/springcloud/spring-cloud-01.md?sidebar=05-spring-cloud-sidebar.md">SpringCloud(Alibaba)</a>
-    <a href="/#/docs/distribute/distribute-system-01.md?sidebar=06-distribute-system-sidebar.md">分布式系统</a>
-    <a href="/#/docs/middleware/middleware-01.md?sidebar=07-middleware-sidebar.md">中间件</a>
-    <a href="/#/docs/apm-tracer/apm-tracer-01.md?sidebar=08-apm-tracer-sidebar.md">分布式链路追踪</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>marknote</title>
+    <link rel="stylesheet" href="dist/index.css" />
+  </head>
+  <body>
+    <div class="top-nav f">
+      <div class="f-fixed sidebar-switch">
+        <div class="clickable sidebar-control"></div>
+      </div>
+      <div class="f-auto">
+        <a href="/#/README.md" class="site-name">Marknote</a>
+      </div>
+      <div class="f-fixed links">
+        <!-- 顶部右则导航 -->
+        <a href="/#/docs/java-core/java核心总览.md?sidebar=01-java-core-sidebar.md">java-core</a>
+        <a href="/#/docs/concurrent/concurrent-01.md?sidebar=02-concurrent-sidebar.md">并发编程</a>
+        <a href="/#/docs/jvm-shoot/deploy-on-github.md?sidebar=03-jvm-troubleshooting-sidebar.md">JVM&troubleshooting</a>
+        <a href="/#/docs/spring/java动态代理技术分析.md?sidebar=04-spring-sidebar.md">Spring</a>
+        <a href="/#/docs/springcloud/spring-cloud-01.md?sidebar=05-spring-cloud-sidebar.md">SpringCloud(Alibaba)</a>
+        <a href="/#/docs/distribute/distribute-system-01.md?sidebar=06-distribute-system-sidebar.md">分布式系统</a>
+        <a href="/#/docs/middleware/middleware-01.md?sidebar=07-middleware-sidebar.md">中间件</a>
+        <a href="/#/docs/apm-tracer/apm-tracer-01.md?sidebar=08-apm-tracer-sidebar.md">分布式链路追踪</a>
 
-    <a href="https://github.com/turn-left" target="_blank">GitHub</a>
-  </div>
-</div>
+        <a href="https://github.com/turn-left" target="_blank">GitHub</a>
+      </div>
+    </div>
 
-<div class="container f">
-  <!-- 侧栏 -->
-  <aside id="sidebar" class="f-fixed"></aside>
-  <div class="f-auto content-wrapper">
-    <!-- 文章 -->
-    <article id="content" class="markdown-body"></article>
-  </div>
-</div>
+    <div class="container f">
+      <!-- 侧栏 -->
+      <aside id="sidebar" class="f-fixed sidebar"></aside>
+      <div class="f-auto content-wrapper">
+        <!-- 文章 -->
+        <article id="content" class="markdown-body content"></article>
+      </div>
+    </div>
 
-<!-- 原文连接，打印时才会显示 -->
-<div class="permalink"></div>
+    <!-- 原文连接，打印时才会显示 -->
+    <div class="permalink"></div>
 
 <script>
       // 配置
