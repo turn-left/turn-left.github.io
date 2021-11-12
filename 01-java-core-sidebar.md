@@ -4,8 +4,8 @@
 
 ### 总览
 
-- [关于java8模块](docs/java-core/java核心总览.md)
 - [方法论](docs/java-core/方法论.md)
+- [关于java8模块](docs/java-core/java核心总览.md)
 - [java体系学习资料](docs/java-core/java体系学习资料汇总.md)
 - 自动装箱与拆箱
 - 关于正则表达式
