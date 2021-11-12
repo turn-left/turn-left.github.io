@@ -13,3 +13,19 @@
 #### zookeeper
 
 #### elastic
+
+#### rocketMQ
+
+***
+
+#### HDFS
+
+#### MapReduce
+
+#### flume
+
+#### flink
+
+#### HBase
+
+#### Hive
