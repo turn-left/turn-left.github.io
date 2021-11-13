@@ -2,11 +2,11 @@ Spring最重要的功能就是帮助程序员创建对象（也就是IOC），�
 
 Bean的生命周期就是指：**在Spring中，一个Bean是如何生成的，如何销毁的**
 
-Bean生命周期流程图 <br>
+## Bean生命周期流程图
 
-![Bean的生命周期流程.png](/docs/spring/imgs/Spring-Bean的生命周期流程1.png)
+![Bean生命周期流程图](/docs/spring/imgs/Spring-Bean的生命周期流程1.png)
 
-- [JFR](https://zhuanlan.zhihu.com/p/122247741)
+[附带资料JFR介绍](https://zhuanlan.zhihu.com/p/122247741)
 
 ## Bean的生成过程
 
@@ -22,13 +22,9 @@ Spring扫描底层流程：https://www.processon.com/view/link/61370ee60e3e7412e
 1. 首先，通过ResourcePatternResolver获得指定包路径下的所有`.class`文件（Spring源码中将此文件包装成了Resource对象）
 2. 遍历每个Resource对象
 3.
-
 利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）
-
 4.
-
 利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）
-
 5. 筛选通过后，基于metadataReader生成ScannedGenericBeanDefinition
 6. 再基于metadataReader判断是不是对应的类是不是接口或抽象类
 7. 如果筛选通过，那么就表示扫描到了一个Bean，将ScannedGenericBeanDefinition加入结果集
@@ -156,7 +152,7 @@ public class ZhouyuBeanPostProcessor implements InstantiationAwareBeanPostProces
 
 userService这个Bean，在实例化前会直接返回一个由我们所定义的UserService对象。如果是这样，表示不需要Spring来实例化了，并且后续的Spring依赖注入也不会进行了，会跳过一些步骤，直接执行初始化后这一步。
 
-###       
+###  
 
 ### 5. 实例化
 
@@ -385,7 +381,7 @@ public class ZhouyuBeanPostProcessor implements BeanPostProcessor {
 1. 查看当前Bean对象是否实现了InitializingBean接口，如果实现了就调用其afterPropertiesSet()方法
 2. 执行BeanDefinition中指定的初始化方法
 
-###       
+###  
 
 ### 13. 初始化后
 
