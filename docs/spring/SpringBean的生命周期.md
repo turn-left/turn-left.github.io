@@ -15,16 +15,14 @@ Bean的生命周期就是指：**在Spring中，一个Bean是如何生成的，�
 Spring启动的时候会进行扫描，会先调用`org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider#scanCandidateComponents(String basePackage)`
 扫描某个包路径，并得到BeanDefinition的Set集合。
 
-**关于Spring启动流程，后续会单独的课详细讲，这里先讲一下Spring扫描的底层实现：******
+**关于Spring启动流程，后续会单独详细探讨，这里先分析一下Spring扫描的底层实现**
 
-Spring扫描底层流程：https://www.processon.com/view/link/61370ee60e3e7412ecd95d43****
+****Spring扫描底层流程：https://www.processon.com/view/link/61370ee60e3e7412ecd95d43****
 
 1. 首先，通过ResourcePatternResolver获得指定包路径下的所有`.class`文件（Spring源码中将此文件包装成了Resource对象）
 2. 遍历每个Resource对象
-3.
-利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）
-4.
-利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）
+3. 利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）
+4. 利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）
 5. 筛选通过后，基于metadataReader生成ScannedGenericBeanDefinition
 6. 再基于metadataReader判断是不是对应的类是不是接口或抽象类
 7. 如果筛选通过，那么就表示扫描到了一个Bean，将ScannedGenericBeanDefinition加入结果集
@@ -47,7 +45,7 @@ MetadataReader表示类的元数据读取器，主要包含了一个AnnotationMe
 。（beanClass属性的类型是Object，它即可以存储类的名字，也可以存储class对象）
 
 最后，上面是说的通过扫描得到BeanDefinition对象，我们还可以通过直接定义BeanDefinition，或解析spring.xml文件的<bean/>
-，或者@Bean注解得到BeanDefinition对象。（后续课程会分析@Bean注解是怎么生成BeanDefinition的）。
+，或者@Bean注解得到BeanDefinition对象。（后续会分析@Bean注解是怎么生成BeanDefinition的）。
 
 ### 2. 合并BeanDefinition
 
@@ -56,15 +54,15 @@ MetadataReader表示类的元数据读取器，主要包含了一个AnnotationMe
 父子BeanDefinition实际用的比较少，使用是这样的，比如：
 
 ```
-<bean id="parent" class="com.zhouyu.service.Parent" scope="prototype"/>
-<bean id="child" class="com.zhouyu.service.Child"/>
+<bean id="parent" class="com.ethen.service.Parent" scope="prototype"/>
+<bean id="child" class="com.ethen.service.Child"/>
 ```
 
 这么定义的情况下，child是单例Bean。
 
 ```
-<bean id="parent" class="com.zhouyu.service.Parent" scope="prototype"/>
-<bean id="child" class="com.zhouyu.service.Child" parent="parent"/>
+<bean id="parent" class="com.ethen.service.Parent" scope="prototype"/>
+<bean id="child" class="com.ethen.service.Child" parent="parent"/>
 ```
 
 但是这么定义的情况下，child就是原型Bean了。
@@ -102,7 +100,7 @@ public boolean hasBeanClass() {
 
 如果beanClass属性的类型是Class，那么就直接返回，如果不是，则会根据类名进行加载（doResolveBeanClass方法所做的事情）
 
-会利用BeanFactory所设置的类加载器来加载类，如果没有设置，则默认使用**ClassUtils.getDefaultClassLoader()**所返回的类加载器来加载。
+会利用BeanFactory所设置的类加载器来加载类，如果没有设置，则默认使用**ClassUtils.getDefaultClassLoader()** 所返回的类加载器来加载。
 
 #### **ClassUtils.getDefaultClassLoader()**
 
@@ -114,12 +112,12 @@ public boolean hasBeanClass() {
 
 当前BeanDefinition对应的类成功加载后，就可以实例化对象了，但是...
 
-在Spring中，实例化对象之前，Spring提供了一个扩展点，允许用户来控制是否在某个或某些Bean实例化之前做一些启动动作。这个扩展点叫**
-InstantiationAwareBeanPostProcessor.postProcessBeforeInstantiation()**。比如：
+在Spring中，实例化对象之前，Spring提供了一个扩展点，允许用户来控制是否在某个或某些Bean实例化之前做一些启动动作。这个扩展点叫
+**InstantiationAwareBeanPostProcessor.postProcessBeforeInstantiation()**。比如：
 
 ```
 @Component
-public class ZhouyuBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+public class EthenBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
@@ -137,7 +135,7 @@ public class ZhouyuBeanPostProcessor implements InstantiationAwareBeanPostProces
 
 ```
 @Component
-public class ZhouyuBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+public class EthenBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
@@ -152,7 +150,7 @@ public class ZhouyuBeanPostProcessor implements InstantiationAwareBeanPostProces
 
 userService这个Bean，在实例化前会直接返回一个由我们所定义的UserService对象。如果是这样，表示不需要Spring来实例化了，并且后续的Spring依赖注入也不会进行了，会跳过一些步骤，直接执行初始化后这一步。
 
-###  
+###   
 
 ### 5. 实例化
 
@@ -182,7 +180,7 @@ context.registerBeanDefinition("userService", beanDefinition);
 方式一：
 
 ```
-<bean id="userService" class="com.zhouyu.service.UserService" factory-method="createUserService" />
+<bean id="userService" class="com.ethen.service.UserService" factory-method="createUserService" />
 ```
 
 对应的UserService类为：
@@ -206,7 +204,7 @@ public class UserService {
 方式二：
 
 ```
-<bean id="commonService" class="com.zhouyu.service.CommonService"/>
+<bean id="commonService" class="com.ethen.service.CommonService"/>
 <bean id="userService1" factory-bean="commonService" factory-method="createUserService" />
 ```
 
@@ -227,9 +225,9 @@ Spring发现当前BeanDefinition方法设置了工厂方法后，就会区分这
 
 ### 5.3 推断构造方法
 
-第一节已经讲过一遍大概原理了，后面有一节课单独分析源码实现。推断完构造方法后，就会使用构造方法来进行实例化了。
+推断完构造方法后，就会使用构造方法来进行实例化了。
 
-额外的，在推断构造方法逻辑中除开会去选择构造方法以及查找入参对象意外，会还判断是否在对应的类中是否存在使用**@Lookup注解**了方法。如果存在则把该方法封装为LookupOverride对象并添加到BeanDefinition中。
+额外的，在推断构造方法逻辑中除开会去选择构造方法以及查找入参对象意外，会还判断是否在对应的类中是否存在使用 **@Lookup注解**了方法。如果存在则把该方法封装为LookupOverride对象并添加到BeanDefinition中。
 
 在实例化时，如果判断出来当前BeanDefinition中没有LookupOverride，那就直接用构造方法反射得到一个实例对象。如果存在LookupOverride对象，也就是类中存在@Lookup注解了的方法，那就会生成一个代理对象。
 
@@ -256,12 +254,11 @@ public class UserService {
 
 ### 6. BeanDefinition的后置处理
 
-Bean对象实例化出来之后，接下来就应该给对象的属性赋值了。在真正给属性赋值之前，Spring又提供了一个扩展点**
-MergedBeanDefinitionPostProcessor.postProcessMergedBeanDefinition()**，可以对此时的BeanDefinition进行加工，比如：
+Bean对象实例化出来之后，接下来就应该给对象的属性赋值了。在真正给属性赋值之前，Spring又提供了一个扩展点**MergedBeanDefinitionPostProcessor.postProcessMergedBeanDefinition()**，可以对此时的BeanDefinition进行加工，比如：
 
 ```
 @Component
-public class ZhouyuMergedBeanDefinitionPostProcessor implements MergedBeanDefinitionPostProcessor {
+public class EthenMergedBeanDefinitionPostProcessor implements MergedBeanDefinitionPostProcessor {
 
 	@Override
 	public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class<?> beanType, String beanName) {
@@ -281,7 +278,7 @@ public class ZhouyuMergedBeanDefinitionPostProcessor implements MergedBeanDefini
 
 ```
 @Component
-public class ZhouyuInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+public class EthenInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
 	@Override
 	public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
@@ -302,7 +299,7 @@ public class ZhouyuInstantiationAwareBeanPostProcessor implements InstantiationA
 
 ### 8. 自动注入
 
-这里的自动注入指的是Spring的自动注入，后续依赖注入课程中单独讲
+这里的自动注入指的是Spring的自动注入，后续依赖注入单独探讨
 
 ### 9. 处理属性
 
@@ -311,13 +308,13 @@ public class ZhouyuInstantiationAwareBeanPostProcessor implements InstantiationA
 
 ```
 @Component
-public class ZhouyuInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+public class EthenInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
 	@Override
 	public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
 		if ("userService".equals(beanName)) {
 			for (Field field : bean.getClass().getFields()) {
-				if (field.isAnnotationPresent(ZhouyuInject.class)) {
+				if (field.isAnnotationPresent(EthenInject.class)) {
 					field.setAccessible(true);
 					try {
 						field.set(bean, "123");
@@ -333,7 +330,7 @@ public class ZhouyuInstantiationAwareBeanPostProcessor implements InstantiationA
 }
 ```
 
-关于@Autowired、@Resource、@Value的底层源码，会在后续的依赖注入课程中详解。
+关于@Autowired、@Resource、@Value的底层源码，会在后续的依赖注入中分析。
 
 ### 10. 执行Aware
 
@@ -349,7 +346,7 @@ public class ZhouyuInstantiationAwareBeanPostProcessor implements InstantiationA
 
 ```
 @Component
-public class ZhouyuBeanPostProcessor implements BeanPostProcessor {
+public class EthenBeanPostProcessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -381,7 +378,7 @@ public class ZhouyuBeanPostProcessor implements BeanPostProcessor {
 1. 查看当前Bean对象是否实现了InitializingBean接口，如果实现了就调用其afterPropertiesSet()方法
 2. 执行BeanDefinition中指定的初始化方法
 
-###  
+###   
 
 ### 13. 初始化后
 
@@ -389,7 +386,7 @@ public class ZhouyuBeanPostProcessor implements BeanPostProcessor {
 
 ```
 @Component
-public class ZhouyuBeanPostProcessor implements BeanPostProcessor {
+public class EthenBeanPostProcessor implements BeanPostProcessor {
 
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
