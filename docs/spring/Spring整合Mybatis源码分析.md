@@ -29,7 +29,7 @@
 
 Spring整合Mybatis之后SQL执行流程
 <br>
-![spring整合mybatis流程.png](/docs/spring/imgs/spring整合mybatis流程.png)
+![spring整合mybatis流程.png](/docs/spring/imgs/spring整合Mybtis流程图.png)
 
 
 ## Mybatis-Spring  2.0.6版本(最新版)底层源码执行流程
