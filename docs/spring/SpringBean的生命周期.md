@@ -21,8 +21,14 @@ Spring启动的时候会进行扫描，会先调用`org.springframework.context.
 
 1. 首先，通过ResourcePatternResolver获得指定包路径下的所有`.class`文件（Spring源码中将此文件包装成了Resource对象）
 2. 遍历每个Resource对象
-3. 利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）
-4. 利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）
+3.
+
+利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）
+
+4.
+
+利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）
+
 5. 筛选通过后，基于metadataReader生成ScannedGenericBeanDefinition
 6. 再基于metadataReader判断是不是对应的类是不是接口或抽象类
 7. 如果筛选通过，那么就表示扫描到了一个Bean，将ScannedGenericBeanDefinition加入结果集
@@ -53,14 +59,14 @@ MetadataReader表示类的元数据读取器，主要包含了一个AnnotationMe
 
 父子BeanDefinition实际用的比较少，使用是这样的，比如：
 
-```
+```xml
 <bean id="parent" class="com.ethen.service.Parent" scope="prototype"/>
 <bean id="child" class="com.ethen.service.Child"/>
 ```
 
 这么定义的情况下，child是单例Bean。
 
-```
+```xml
 <bean id="parent" class="com.ethen.service.Parent" scope="prototype"/>
 <bean id="child" class="com.ethen.service.Child" parent="parent"/>
 ```
@@ -76,13 +82,13 @@ MetadataReader表示类的元数据读取器，主要包含了一个AnnotationMe
 BeanDefinition合并之后，就可以去创建Bean对象了，而创建Bean就必须实例化对象，而实例化就必须先加载当前BeanDefinition所对应的class，在AbstractAutowireCapableBeanFactory类的createBean()
 方法中，一开始就会调用：
 
-```
+```java
 Class<?> resolvedClass = resolveBeanClass(mbd, beanName);
 ```
 
 这行代码就是去加载类，该方法是这么实现的：
 
-```
+```java
 if (mbd.hasBeanClass()) {
 	return mbd.getBeanClass();
 }
@@ -115,7 +121,7 @@ public boolean hasBeanClass() {
 在Spring中，实例化对象之前，Spring提供了一个扩展点，允许用户来控制是否在某个或某些Bean实例化之前做一些启动动作。这个扩展点叫
 **InstantiationAwareBeanPostProcessor.postProcessBeforeInstantiation()**。比如：
 
-```
+```java
 @Component
 public class EthenBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
@@ -133,7 +139,7 @@ public class EthenBeanPostProcessor implements InstantiationAwareBeanPostProcess
 
 值得注意的是，postProcessBeforeInstantiation()是有返回值的，如果这么实现：
 
-```
+```java
 @Component
 public class EthenBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
@@ -150,7 +156,7 @@ public class EthenBeanPostProcessor implements InstantiationAwareBeanPostProcess
 
 userService这个Bean，在实例化前会直接返回一个由我们所定义的UserService对象。如果是这样，表示不需要Spring来实例化了，并且后续的Spring依赖注入也不会进行了，会跳过一些步骤，直接执行初始化后这一步。
 
-###   
+###          
 
 ### 5. 实例化
 
@@ -162,7 +168,7 @@ userService这个Bean，在实例化前会直接返回一个由我们所定义�
 
 得直接使用BeanDefinition对象来设置Supplier，比如：
 
-```
+```java
 AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
 beanDefinition.setInstanceSupplier(new Supplier<Object>() {
 	@Override
@@ -179,13 +185,13 @@ context.registerBeanDefinition("userService", beanDefinition);
 
 方式一：
 
-```
+```xml
 <bean id="userService" class="com.ethen.service.UserService" factory-method="createUserService" />
 ```
 
 对应的UserService类为：
 
-```
+```java
 public class UserService {
 
 	public static UserService createUserService() {
@@ -203,14 +209,14 @@ public class UserService {
 
 方式二：
 
-```
+```xml
 <bean id="commonService" class="com.ethen.service.CommonService"/>
 <bean id="userService1" factory-bean="commonService" factory-method="createUserService" />
 ```
 
 对应的CommonService的类为：
 
-```
+```java
 public class CommonService {
 
 	public UserService createUserService() {
@@ -233,7 +239,7 @@ Spring发现当前BeanDefinition方法设置了工厂方法后，就会区分这
 
 @Lookup注解就是**方法注入**，使用demo如下：
 
-```
+```java
 @Component
 public class UserService {
 
@@ -254,9 +260,10 @@ public class UserService {
 
 ### 6. BeanDefinition的后置处理
 
-Bean对象实例化出来之后，接下来就应该给对象的属性赋值了。在真正给属性赋值之前，Spring又提供了一个扩展点**MergedBeanDefinitionPostProcessor.postProcessMergedBeanDefinition()**，可以对此时的BeanDefinition进行加工，比如：
+Bean对象实例化出来之后，接下来就应该给对象的属性赋值了。在真正给属性赋值之前，Spring又提供了一个扩展点**
+MergedBeanDefinitionPostProcessor.postProcessMergedBeanDefinition()**，可以对此时的BeanDefinition进行加工，比如：
 
-```
+```java
 @Component
 public class EthenMergedBeanDefinitionPostProcessor implements MergedBeanDefinitionPostProcessor {
 
@@ -276,7 +283,7 @@ public class EthenMergedBeanDefinitionPostProcessor implements MergedBeanDefinit
 
 在处理完BeanDefinition后，Spring又设计了一个扩展点：**InstantiationAwareBeanPostProcessor.postProcessAfterInstantiation()**，比如：
 
-```
+```java
 @Component
 public class EthenInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
@@ -287,7 +294,6 @@ public class EthenInstantiationAwareBeanPostProcessor implements InstantiationAw
 			UserService userService = (UserService) bean;
 			userService.test();
 		}
-
 		return true;
 	}
 }
@@ -306,27 +312,27 @@ public class EthenInstantiationAwareBeanPostProcessor implements InstantiationAw
 这个步骤中，就会处理@Autowired、@Resource、@Value等注解，也是通过**InstantiationAwareBeanPostProcessor.postProcessProperties()**
 扩展点来实现的，比如我们甚至可以实现一个自己的自动注入功能，比如：
 
-```
+```java
+
 @Component
 public class EthenInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
-	@Override
-	public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
-		if ("userService".equals(beanName)) {
-			for (Field field : bean.getClass().getFields()) {
-				if (field.isAnnotationPresent(EthenInject.class)) {
-					field.setAccessible(true);
-					try {
-						field.set(bean, "123");
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		}
-
-		return pvs;
-	}
+  @Override
+  public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+    if ("userService".equals(beanName)) {
+      for (Field field : bean.getClass().getFields()) {
+        if (field.isAnnotationPresent(EthenInject.class)) {
+          field.setAccessible(true);
+          try {
+            field.set(bean, "123");
+          } catch (IllegalAccessException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    }
+    return pvs;
+  }
 }
 ```
 
@@ -344,18 +350,19 @@ public class EthenInstantiationAwareBeanPostProcessor implements InstantiationAw
 
 初始化前，也是Spring提供的一个扩展点：**BeanPostProcessor.postProcessBeforeInitialization()**，比如
 
-```
+```java
+
 @Component
 public class EthenBeanPostProcessor implements BeanPostProcessor {
 
-	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		if ("userService".equals(beanName)) {
-			System.out.println("初始化前");
-		}
+  @Override
+  public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+    if ("userService".equals(beanName)) {
+      System.out.println("初始化前");
+    }
 
-		return bean;
-	}
+    return bean;
+  }
 }
 ```
 
@@ -378,24 +385,25 @@ public class EthenBeanPostProcessor implements BeanPostProcessor {
 1. 查看当前Bean对象是否实现了InitializingBean接口，如果实现了就调用其afterPropertiesSet()方法
 2. 执行BeanDefinition中指定的初始化方法
 
-###   
+###          
 
 ### 13. 初始化后
 
 这是Bean创建生命周期中的最后一个步骤，也是Spring提供的一个扩展点：**BeanPostProcessor.postProcessAfterInitialization()**，比如：
 
-```
+```java
+
 @Component
 public class EthenBeanPostProcessor implements BeanPostProcessor {
 
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		if ("userService".equals(beanName)) {
-			System.out.println("初始化后");
-		}
+  @Override
+  public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+    if ("userService".equals(beanName)) {
+      System.out.println("初始化后");
+    }
 
-		return bean;
-	}
+    return bean;
+  }
 }
 ```
 
@@ -413,3 +421,52 @@ public class EthenBeanPostProcessor implements BeanPostProcessor {
 8. BeanPostProcessor.postProcessBeforeInitialization()
 9. 初始化
 10. BeanPostProcessor.postProcessAfterInitialization()
+
+## Bean的销毁过程
+
+Bean销毁是发送在Spring容器关闭过程中的。 ​
+
+在Spring容器关闭时，比如：
+
+```java
+AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+  UserService userService=(UserService)context.getBean("userService");
+  userService.test();
+
+// 容器关闭
+  context.close();
+```
+
+在Bean创建过程中，在最后（初始化之后），有一个步骤会去判断当前创建的Bean是不是DisposableBean：
+
+1. 当前Bean是否实现了DisposableBean接口
+2. 或者，当前Bean是否实现了AutoCloseable接口
+3. BeanDefinition中是否指定了destroyMethod
+4. 调用DestructionAwareBeanPostProcessor.requiresDestruction(bean)进行判断
+1. ApplicationListenerDetector中直接使得ApplicationListener是DisposableBean
+1. InitDestroyAnnotationBeanPostProcessor中使得拥有@PreDestroy注解了的方法就是DisposableBean
+5. 把符合上述任意一个条件的Bean适配成DisposableBeanAdapter对象，并存入disposableBeans中（一个LinkedHashMap）
+
+在Spring容器关闭过程时：
+
+1. 首先发布ContextClosedEvent事件
+1. 调用lifecycleProcessor的onCloese()方法
+1. 销毁单例Bean
+1. 遍历disposableBeans 1. 把每个disposableBean从单例池中移除 1. 调用disposableBean的destroy()
+1. 如果这个disposableBean还被其他Bean依赖了，那么也得销毁其他Bean 1. 如果这个disposableBean还包含了inner beans，将这些Bean从单例池中移除掉 (inner
+   bean参考[https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-inner-beans](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-inner-beans))
+2. 清空manualSingletonNames，是一个Set，存的是用户手动注册的单例Bean的beanName
+3. 清空allBeanNamesByType，是一个Map，key是bean类型，value是该类型所有的beanName数组
+4. 清空singletonBeanNamesByType，和allBeanNamesByType类似，只不过只存了单例Bean
+
+**​**
+
+这里涉及到一个设计模式：**适配器模式**
+
+在销毁时，Spring会找出实现了DisposableBean接口的Bean。 ​
+
+但是我们在定义一个Bean时，如果这个Bean实现了DisposableBean接口，或者实现了AutoCloseable接口，或者在BeanDefinition中指定了destroyMethodName，那么这个Bean都属于“DisposableBean”，这些Bean在容器关闭时都要调用相应的销毁方法。
+
+所以，这里就需要进行适配，将实现了DisposableBean接口、或者AutoCloseable接口等适配成实现了DisposableBean接口，所以就用到了DisposableBeanAdapter。
+
+会把实现了AutoCloseable接口的类封装成DisposableBeanAdapter，而DisposableBeanAdapter实现了DisposableBean接口。
