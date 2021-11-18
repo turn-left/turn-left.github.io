@@ -4,7 +4,7 @@ Bean的生命周期就是指：**在Spring中，一个Bean是如何生成的，�
 
 ## Bean生命周期流程图
 
-![Bean生命周期流程图](/docs/spring/imgs/Spring-Bean的生命周期流程1.png)
+![Bean生命周期流程图](/docs/spring/imgs/Bean的创建生命周期.png)
 
 [JFR了解一下](https://zhuanlan.zhihu.com/p/122247741)
 
@@ -21,13 +21,9 @@ Spring启动的时候会进行扫描，会先调用`org.springframework.context.
 
 1. 首先，通过ResourcePatternResolver获得指定包路径下的所有`.class`文件（Spring源码中将此文件包装成了Resource对象）
 2. 遍历每个Resource对象
-3.
+3. 利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）
 
-利用MetadataReaderFactory解析Resource对象得到MetadataReader（在Spring源码中MetadataReaderFactory具体的实现类为CachingMetadataReaderFactory，MetadataReader的具体实现类为SimpleMetadataReader）
-
-4.
-
-利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）
+4. 利用MetadataReader进行excludeFilters和includeFilters，以及条件注解@Conditional的筛选（条件注解并不能理解：某个类上是否存在@Conditional注解，如果存在则调用注解中所指定的类的match方法进行匹配，匹配成功则通过筛选，匹配失败则pass掉。）
 
 5. 筛选通过后，基于metadataReader生成ScannedGenericBeanDefinition
 6. 再基于metadataReader判断是不是对应的类是不是接口或抽象类
