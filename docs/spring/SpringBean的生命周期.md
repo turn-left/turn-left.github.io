@@ -17,7 +17,8 @@ Spring启动的时候会进行扫描，会先调用`org.springframework.context.
 
 **关于Spring启动流程，后续会单独详细探讨，这里先分析一下Spring扫描的底层实现**
 
-****Spring扫描底层流程：https://www.processon.com/view/link/61370ee60e3e7412ecd95d43****
+****Spring扫描底层流程****
+![Spring-ComponentScan扫描逻辑](/docs/spring/imgs/Spring-ComponentScan扫描逻辑.png)
 
 1. 首先，通过ResourcePatternResolver获得指定包路径下的所有`.class`文件（Spring源码中将此文件包装成了Resource对象）
 2. 遍历每个Resource对象
