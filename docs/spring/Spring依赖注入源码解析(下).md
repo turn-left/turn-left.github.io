@@ -1,9 +1,5 @@
 
-有道云链接：http://note.youdao.com/noteshare?id=478b1de14614674acde6e331b09d792b&sub=24A246DE39194295878C28F0F8A3C548（复制链接到浏览器的时候注意转行的空格）
-​
-​
-
-上节课我们讲了Spring中的自动注入(byName,byType)和@Autowired注解的工作原理以及源码分析，那么今天这节课，我们来分析还没讲完的，剩下的核心的方法：
+前面分析了Spring中的自动注入(byName,byType)和@Autowired注解的工作原理以及源码分析，那么现在分析剩下的核心的方法：
 ```java
 @Nullable
 Object resolveDependency(DependencyDescriptor descriptor, @Nullable String requestingBeanName,
@@ -12,7 +8,7 @@ Object resolveDependency(DependencyDescriptor descriptor, @Nullable String reque
 该方法表示，传入一个依赖描述（DependencyDescriptor），该方法会根据该依赖描述从BeanFactory中找出对应的唯一的一个Bean对象。
 
 
-下面来分析一下**DefaultListableBeanFactory**中**resolveDependency()**方法的具体实现，**具体流程图**：
+下面来分析一下**DefaultListableBeanFactory**中**resolveDependency()** 方法的具体实现，**具体流程图**：
 [https://www.processon.com/view/link/5f8d3c895653bb06ef076688](https://www.processon.com/view/link/5f8d3c895653bb06ef076688)
 
 

@@ -234,16 +234,16 @@ UserService对应的字节码为：
 ```java
 // class version 52.0 (52)
 // access flags 0x21
-// signature Ljava/lang/Object;Lcom/zhouyu/service/UserInterface<Lcom/zhouyu/service/OrderService;>;
-// declaration: com/zhouyu/service/UserService implements com.zhouyu.service.UserInterface<com.zhouyu.service.OrderService>
-public class com/zhouyu/service/UserService implements com/zhouyu/service/UserInterface{
+// signature Ljava/lang/Object;Lcom/ethen/service/UserInterface<Lcom/ethen/service/OrderService;>;
+// declaration: com/ethen/service/UserService implements com.ethen.service.UserInterface<com.ethen.service.OrderService>
+public class com/ethen/service/UserService implements com/ethen/service/UserInterface{
 
 // compiled from: UserService.java
 
 @Lorg/springframework/stereotype/Component;()
 
 // access flags 0x2
-private Lcom/zhouyu/service/OrderService;orderService
+private Lcom/ethen/service/OrderService;orderService
 
 // access flags 0x1
 public<init>()V
@@ -253,24 +253,24 @@ public<init>()V
   INVOKESPECIAL java/lang/Object.<init> ()V
   RETURN
   L1
-  LOCALVARIABLE this Lcom/zhouyu/service/UserService;L0 L1 0
+  LOCALVARIABLE this Lcom/ethen/service/UserService;L0 L1 0
   MAXSTACK=1
   MAXLOCALS=1
 
 // access flags 0x1
-public setOrderService(Lcom/zhouyu/service/OrderService;)V
+public setOrderService(Lcom/ethen/service/OrderService;)V
 @Lorg/springframework/beans/factory/annotation/Autowired;()
   L0
   LINENUMBER 19 L0
   ALOAD 0
   ALOAD 1
-  PUTFIELD com/zhouyu/service/UserService.orderService:Lcom/zhouyu/service/OrderService;
+  PUTFIELD com/ethen/service/UserService.orderService:Lcom/ethen/service/OrderService;
   L1
   LINENUMBER 20 L1
   RETURN
   L2
-  LOCALVARIABLE this Lcom/zhouyu/service/UserService;L0 L2 0
-  LOCALVARIABLE orderService Lcom/zhouyu/service/OrderService;L0 L2 1
+  LOCALVARIABLE this Lcom/ethen/service/UserService;L0 L2 0
+  LOCALVARIABLE orderService Lcom/ethen/service/OrderService;L0 L2 1
   MAXSTACK=2
   MAXLOCALS=2
 
@@ -285,7 +285,7 @@ public test()V
   LINENUMBER 24 L1
   RETURN
   L2
-  LOCALVARIABLE this Lcom/zhouyu/service/UserService;L0 L2 0
+  LOCALVARIABLE this Lcom/ethen/service/UserService;L0 L2 0
   MAXSTACK=2
   MAXLOCALS=1
 
@@ -296,11 +296,11 @@ public synthetic bridge setOrderService(Ljava/lang/Object;)V
   LINENUMBER 11 L0
   ALOAD 0
   ALOAD 1
-  CHECKCAST com/zhouyu/service/OrderService
-  INVOKEVIRTUAL com/zhouyu/service/UserService.setOrderService(Lcom/zhouyu/service/OrderService;)V
+  CHECKCAST com/ethen/service/OrderService
+  INVOKEVIRTUAL com/ethen/service/UserService.setOrderService(Lcom/ethen/service/OrderService;)V
   RETURN
   L1
-  LOCALVARIABLE this Lcom/zhouyu/service/UserService;L0 L1 0
+  LOCALVARIABLE this Lcom/ethen/service/UserService;L0 L1 0
   MAXSTACK=2
   MAXLOCALS=2
   }
@@ -309,7 +309,7 @@ public synthetic bridge setOrderService(Ljava/lang/Object;)V
 
 可以看到在UserSerivce的字节码中有两个setOrderService方法：
 
-1. public setOrderService(Lcom/zhouyu/service/OrderService;)V
+1. public setOrderService(Lcom/ethen/service/OrderService;)V
 1. public synthetic bridge setOrderService(Ljava/lang/Object;)V
 
 并且都是存在@Autowired注解的。 ​
