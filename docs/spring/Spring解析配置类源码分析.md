@@ -1,6 +1,5 @@
 ## Spring配置类的解析
 
-
 ### 解析配置类思维脑图
 
 ![spring解析配置类](/docs/spring/imgs/spring解析配置类.png)

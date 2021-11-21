@@ -8,6 +8,7 @@
 - [Spring之依赖注入源码解析(上).md](docs/spring/4.Spring依赖注入源码解析(上).md)
 - [Spring之依赖注入源码解析(下).md](docs/spring/5.Spring依赖注入源码解析(下).md)
 - [Spring之循环依赖底层源码解析](docs/spring/6.Spring之循环依赖底层源码解析.md)
+- [Spring之推断构造方法源码解析](docs/spring/Spring之推断构造方法源码解析.md) 
 - [Spring之启动过程源码解析.md](docs/spring/Spring之启动过程源码解析.md) 
 - [Spring-AOP源码解析(上)](docs/spring/Spring-AOP源码解析(上).md)
 - [Spring-AOP源码解析(下)](docs/spring/Spring-AOP源码解析(下).md)
