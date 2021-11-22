@@ -31,15 +31,13 @@ MVC”。
 
 3.**参数解析麻烦**:单个参数（转换类型）--->pojo对象 Json文本--->pojo对象
 
-4.**数据响应麻烦:**pojo对象--->json ... Content-type
+4.**数据响应麻烦:** pojo对象--->json ... Content-type
 
 5.跳转页面麻烦, 对path的控制、 如果使用其他模板也很麻烦 、设置编码麻烦...等等...
 
-###        
-
 所以SpringMVC 就是在Servlet的基础上进行了封装，帮我把这些麻烦事都给我们做了。
 
-##        
+##             
 
 Web框架的升级是一个不断偷懒的过程
 
@@ -113,19 +111,18 @@ View：进行视图渲染（将jsp转换成html内容 --这是Servlet容器的�
 
 2. DispatcherServlet收到请求调用处理器映射器HandlerMapping。
 
-a)   处理器映射器根据请求url找到具体的处理器，生成处理器执行链HandlerExecutionChain(包括处理器对象和处理器拦截器)一并返回给DispatcherServlet。
+- 处理器映射器根据请求url找到具体的处理器，生成处理器执行链HandlerExecutionChain(包括处理器对象和处理器拦截器)一并返回给DispatcherServlet。
 
 3. DispatcherServlet根据处理器Handler获取处理器适配器HandlerAdapter,执行HandlerAdapter处理一系列的操作，如：参数封装，数据格式转换，数据验证等操作
 
 4. 执行处理器Handler(Controller，也叫页面控制器)。
 
-a)   Handler执行完成返回ModelAndView
-
-b)   HandlerAdapter将Handler执行结果ModelAndView返回到DispatcherServlet
+- Handler执行完成返回ModelAndView
+- HandlerAdapter将Handler执行结果ModelAndView返回到DispatcherServlet
 
 5. DispatcherServlet将ModelAndView传给ViewReslover视图解析器
 
-a)   ViewReslover解析后返回具体View
+- ViewReslover解析后返回具体View
 
 6. DispatcherServlet对View进行渲染视图（即将模型数据model填充至视图中）。
 
@@ -299,8 +296,21 @@ protected void doDispatch(HttpServletRequest request,HttpServletResponse respons
 
 ```
 
-- 附上流程图(持续更新...)
+### 附上流程图(持续更新...)
 
-![clip_image005](/docs/spring/imgs/springmvc/clip_image005.png)
+- SpringMVC启动流程
+
+  ![SpringMVC启动流程](/docs/spring/imgs/springmvc/SpringMVC启动流程.png)
+
+- SpringMVC整体请求流程
+
+  ![SpringMVC整体请求流程](/docs/spring/imgs/springmvc/SpringMVC整体请求流程.png)
+  
+- SpringMVC父子容器类结构
+
+  ![SpringMVC父子容器类结构](/docs/spring/imgs/springmvc/SpringMVC父子容器类结构.png)
+
+- @RequestMapping原理
+  ![@RequestMapping原理.png](/docs/spring/imgs/springmvc/@RequestMapping原理.png)
 
  
