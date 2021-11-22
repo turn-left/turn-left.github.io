@@ -300,7 +300,7 @@ protected void doDispatch(HttpServletRequest request,HttpServletResponse respons
 
 - SpringMVC启动流程
 
-  ![SpringMVC启动流程](/docs/spring/imgs/springmvc/SpringMVC启动流程.png)
+  ![SpringMVC启动流程](/docs/spring/imgs/springmvc/SpringMVC启动流程2.png)
 
 - SpringMVC整体请求流程
 
