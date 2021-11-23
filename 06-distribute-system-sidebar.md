@@ -2,6 +2,10 @@
 
 ***
 
+#### 系统间通信
+
+- [HTTP协议原理及java实现](docs/distribute/HTTP协议原理及java实现.md)
+
 #### 幂等性设计
 
 #### 分布式事务
