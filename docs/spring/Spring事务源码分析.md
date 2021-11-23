@@ -1,4 +1,6 @@
-## @EnableTransactionManagement工作原理
+## Spring事务源码分析
+
+### @EnableTransactionManagement工作原理
 
 开启Spring事务本质上就是增加了一个Advisor，但我们使用@EnableTransactionManagement注解来开启Spring事务是，该注解代理的功能就是向Spring容器中添加了两个Bean：
 
@@ -28,7 +30,7 @@ ProxyTransactionManagementConfiguration是一个配置类，它又定义了另�
 
 
 
-## Spring事务基本执行原理
+### Spring事务基本执行原理
 
 
 一个Bean在执行Bean的创建生命周期时，会经过InfrastructureAdvisorAutoProxyCreator的初始化后的方法，会判断当前当前Bean对象是否和BeanFactoryTransactionAttributeSourceAdvisor匹配，匹配逻辑为判断该Bean的类上是否存在@Transactional注解，或者类中的某个方法上是否存在@Transactional注解，如果存在则表示该Bean需要进行动态代理产生一个代理对象作为Bean对象。
@@ -44,10 +46,10 @@ ProxyTransactionManagementConfiguration是一个配置类，它又定义了另�
 
 ​
 
-## Spring事务详细执行流程
+### Spring事务详细执行流程
 [Spring事务执行流程图](https://www.processon.com/view/link/5fab6edf1e0853569633cc06)
 
-## Spring事务传播机制
+### Spring事务传播机制
 在开发过程中，经常会出现一个方法调用另外一个方法，那么这里就涉及到了多种场景，比如a()调用b()：
 
 1. a()和b()方法中的所有sql需要在同一个事务中吗？
@@ -84,16 +86,16 @@ ProxyTransactionManagementConfiguration是一个配置类，它又定义了另�
 这个过程中最为核心的是：**在执行某个方法时，判断当前是否已经存在一个事务，就是判断当前线程的ThreadLocal中是否存在一个数据库连接对象，如果存在则表示已经存在一个事务了。**
 
 
-## Spring事务传播机制分类
+### Spring事务传播机制分类
 ​
 
 **其中，以非事务方式运行，表示以非Spring事务运行，表示在执行这个方法时，Spring事务管理器不会去建立数据库连接，执行sql时，由Mybatis或JdbcTemplate自己来建立数据库连接来执行sql。**
 
 
-## 案例分析
+### 案例分析
 
 
-### 情况1
+#### 情况1
 ```java
 @Component
 public class UserService {
@@ -125,7 +127,7 @@ public class UserService {
 
 
 
-### 情况2
+#### 情况2
 假如是这种情况
 ```java
 @Component
@@ -157,7 +159,7 @@ public class UserService {
 
 
 
-### 情况3
+#### 情况3
 假如是这种情况：
 ```java
 @Component
@@ -191,7 +193,7 @@ public class UserService {
 
 
 
-### 情况4
+#### 情况4
 如果是这种情况：
 ```java
 @Component
@@ -226,7 +228,7 @@ public class UserService {
 
 
 
-## Spring事务强制回滚
+### Spring事务强制回滚
 正常情况下，a()调用b()方法时，如果b()方法抛了异常，但是在a()方法捕获了，那么a()的事务还是会正常提交的，但是有的时候，我们捕获异常可能仅仅只是不把异常信息返回给客户端，而是为了返回一些更友好的错误信息，而这个时候，我们还是希望事务能回滚的，那这个时候就得告诉Spring把当前事务回滚掉，做法就是：
 ```java
 @Transactional
@@ -246,7 +248,7 @@ public void b() throws Exception {
 	throw new Exception();
 }
 ```
-## TransactionSynchronization
+### TransactionSynchronization
 Spring事务有可能会提交，回滚、挂起、恢复，所以Spring事务提供了一种机制，可以让程序员来监听当前Spring事务所处于的状态。
 ​
 
@@ -342,6 +344,6 @@ public class UserService {
 
 }
 ```
-## 问题解决
+### 问题解决
 
 - Transaction rolled back because it has been marked as rollback-only

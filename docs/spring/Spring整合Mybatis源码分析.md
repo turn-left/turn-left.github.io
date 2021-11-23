@@ -1,4 +1,6 @@
-## 整合核心思路
+## Spring整合Mybatis源码分析
+
+### 整合核心思路
 
 
 由很多框架都需要和Spring进行整合，而整合的核心思想就是把其他框架所产生的对象放到Spring容器中，让其成为Bean。
@@ -7,7 +9,7 @@
 比如Mybatis，Mybatis框架可以单独使用，而单独使用Mybatis框架就需要用到Mybatis所提供的一些类构造出对应的对象，然后使用该对象，就能使用到Mybatis框架给我们提供的功能，和Mybatis整合Spring就是为了将这些对象放入Spring容器中成为Bean，只要成为了Bean，在我们的Spring项目中就能很方便的使用这些对象了，也就能很方便的使用Mybatis框架所提供的功能了。
 
 
-## Mybatis-Spring 1.3.2版本底层源码执行流程
+### Mybatis-Spring 1.3.2版本底层源码执行流程
 
 
 1. 通过@MapperScan导入了MapperScannerRegistrar类
@@ -32,7 +34,7 @@ Spring整合Mybatis之后SQL执行流程
 ![spring整合mybatis流程.png](/docs/spring/imgs/spring整合Mybtis流程图.png)
 
 
-## Mybatis-Spring  2.0.6版本(最新版)底层源码执行流程
+### Mybatis-Spring  2.0.6版本(最新版)底层源码执行流程
 
 1. 通过@MapperScan导入了MapperScannerRegistrar类
 1. MapperScannerRegistrar类实现了ImportBeanDefinitionRegistrar接口，所以Spring在启动时会调用MapperScannerRegistrar类中的registerBeanDefinitions方法
@@ -54,7 +56,7 @@ public MapperScannerConfigurer mapperScannerConfigurer() {
 ```
 
 
-## Spring整合Mybatis后一级缓存失效问题
+### Spring整合Mybatis后一级缓存失效问题
 
 ​
 
