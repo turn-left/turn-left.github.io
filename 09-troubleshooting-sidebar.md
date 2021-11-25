@@ -9,7 +9,7 @@
 - jmap
 - jconsole
 - [arthas](https://arthas.aliyun.com/doc/)
-- 线上故障诊断思路
+- [java应用线上故障诊断思路](docs/troubleshooting/java应用线上故障诊断思路.md)
 - 内存泄露
 - 内存溢出
 - 死锁
