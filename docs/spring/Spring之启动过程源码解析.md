@@ -1,7 +1,7 @@
 ## Spring之启动过程源码解析
 
 
-## 前言分析
+### 前言分析
 
 通常，我们说的Spring启动，就是构造ApplicationContext对象以及调用refresh()方法的过程。
 
@@ -32,7 +32,7 @@
 
 
 
-## BeanFactoryPostProcessor
+### BeanFactoryPostProcessor
 ​
 
 BeanPostProcessor表示Bean的后置处理器，是用来对Bean进行加工的，类似的，BeanFactoryPostProcessor理解为BeanFactory的后置处理器，用来用对BeanFactory进行加工的。
@@ -59,7 +59,7 @@ public class EthenBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 所以Spring还提供了一个BeanFactoryPostProcessor的子接口：**BeanDefinitionRegistryPostProcessor**
 ​
 
-## BeanDefinitionRegistryPostProcessor
+### BeanDefinitionRegistryPostProcessor
 
 
 ```java
@@ -92,7 +92,7 @@ public class EthenBeanDefinitionRegistryPostProcessor implements BeanDefinitionR
 ```
 
 
-## 如何理解refresh()？
+### 如何理解refresh()？
 
 
 ```java
@@ -136,10 +136,9 @@ AnnotationConfigWebApplicationContext继承的是AbstractRefreshableWebApplicati
 上面说的**不能刷新是指不能重复刷新，只能调用一次refresh方法，第二次时会报错。**
 
 
-## refresh()底层原理流程
+### refresh()底层原理流程
 
-
-底层原理流程图：[https://www.processon.com/view/link/5f60a7d71e08531edf26a919](https://www.processon.com/view/link/5f60a7d71e08531edf26a919)
+![Spring之启动过程源码解析.md](/docs/spring/imgs/Spring之启动过程源码解析.md)
 
 
 
@@ -226,7 +225,7 @@ AnnotationConfigWebApplicationContext继承的是AbstractRefreshableWebApplicati
 
 
 
-## 执行BeanFactoryPostProcessor
+### 执行BeanFactoryPostProcessor
 
 
 1. 执行通过ApplicationContext添加进来的BeanDefinitionRegistryPostProcessor的postProcessBeanDefinitionRegistry()方法
@@ -238,7 +237,9 @@ AnnotationConfigWebApplicationContext继承的是AbstractRefreshableWebApplicati
 1. 执行BeanFactory中实现了PriorityOrdered接口的BeanFactoryPostProcessor的postProcessBeanFactory()方法
 1. 执行BeanFactory中实现了Ordered接口的BeanFactoryPostProcessor的postProcessBeanFactory()方法
 1. 执行BeanFactory中其他的BeanFactoryPostProcessor的postProcessBeanFactory()方法
-## Lifecycle的使用
+
+### Lifecycle的使用
+
 Lifecycle表示的是ApplicationContext的生命周期，可以定义一个SmartLifecycle来监听ApplicationContext的启动和关闭：
 ```java
 @Component
