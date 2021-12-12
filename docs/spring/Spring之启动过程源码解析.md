@@ -138,7 +138,7 @@ AnnotationConfigWebApplicationContext继承的是AbstractRefreshableWebApplicati
 
 ### refresh()底层原理流程
 
-![Spring之启动过程源码解析.md](/docs/spring/imgs/Spring之启动过程源码解析.md)
+![Spring启动流程1212.png](/docs/spring/imgs/Spring启动流程1212.png)
 
 
 
