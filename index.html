@@ -9,13 +9,13 @@
     <title>marknote</title>
     <link rel="stylesheet" href="dist/index.css" />
   </head>
-  <body>
+  <body style="--top-nav-bgc: var(--color-ryf); --content-bgc: var(--color-ryf);">
     <div class="top-nav f">
       <div class="f-fixed sidebar-switch">
         <div class="clickable sidebar-control"></div>
       </div>
       <div class="f-auto">
-        <a href="/#/README.md" class="site-name">Marknote</a>
+        <a href="/marknote/#/marknote/README.md" class="site-name">Marknote</a>
       </div>
       <div class="f-fixed links">
         <!-- 顶部右则导航 -->
@@ -43,17 +43,19 @@
         <div class="back-to-top"><a href="javascript:;" class="button" title="回到顶部"></a></div>
       </div>
     </div>
+
     <!-- 原文连接，打印时才会显示 -->
     <div class="permalink"></div>
 
-<script>
+    <script>
       // 配置
       window.marknoteConfig = {
         // 网站名称
-        siteName: `turn-left's notes`,
+        siteName: `Marknote - 简单笔记`,
+        // 网站基本地址，以 `/` 结尾
+        basePath: '/marknote/',
       };
-
-</script>
-<script src="dist/index.js"></script>
-</body>
+    </script>
+    <script src="dist/index.js"></script>
+  </body>
 </html>
