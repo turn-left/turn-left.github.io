@@ -1,4 +1,4 @@
 - [git常用命令整理](/docs/tools/git常用命令整理.md)
-- [maven常用命令整理](/docs/tools/maven常用命令整理.md)
+- [maven常用命令](/docs/tools/maven常用命令整理.md)
 - [typora使用教程](/docs/tools/typora使用教程.md)
 - [jvm虚拟机字节码指令表](/docs/tools/jvm虚拟机字节码指令表.md)
