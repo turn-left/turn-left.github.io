@@ -2,4 +2,4 @@
 - git
 - maven
 - jenkins
-- [typora使用教程.md](/docs/tools/Typora使用教程.md)
+- [typora使用教程](/docs/tools/Typora使用教程.md)
