@@ -1,0 +1,5 @@
+- idea
+- git
+- maven
+- jenkins
+- typora
