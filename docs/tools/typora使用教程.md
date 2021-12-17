@@ -1,4 +1,4 @@
-# [Typora使用教程](https://my.oschina.net/u/4302665/blog/3313248)
+## typora使用教程
 
 ### 一、简介
 
