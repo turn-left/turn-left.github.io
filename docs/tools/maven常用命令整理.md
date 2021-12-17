@@ -11,7 +11,7 @@ Maven优点：
 
 ### maven常用命令
 
-- 创建Maven的普通[Java](https://www.linuxidc.com/Java)项目：
+- 创建Maven的普通Java项目：
   mvn archetype:create
    -DgroupId=packageName
    -DartifactId=projectName 
