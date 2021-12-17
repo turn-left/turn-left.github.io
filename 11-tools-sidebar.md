@@ -1,5 +1,2 @@
-- idea
-- git
-- maven
-- jenkins
+- [git常用命令整理](/docs/tools/git常用命令整理.md)
 - [typora使用教程](/docs/tools/Typora使用教程.md)
