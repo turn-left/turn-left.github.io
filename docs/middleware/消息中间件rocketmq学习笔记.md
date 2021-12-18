@@ -5,10 +5,11 @@
 ### 基本情况
 
 - [官方github](https://github.com/apache/rocketmq/tree/master/docs/cn)
-
 - [官方网站](https://rocketmq.apache.org/)
-
 - [可视化插件安装](https://www.cnblogs.com/vipstone/p/11128471.html)
+- [部署与技术架构](https://github.com/apache/rocketmq/blob/master/docs/cn/architecture.md)
+- [关键机制设计](https://github.com/apache/rocketmq/blob/master/docs/cn/design.md)
+- [最佳实践](https://github.com/apache/rocketmq/blob/master/docs/cn/best_practice.md)
 
 ### 设计理念
 
@@ -20,12 +21,12 @@
 
 - 容忍设计缺陷，rocketmq自身不保证消息只被消费一次，将重复消费问题交由消费者来设计，即如何保障程序设计的**幂等性**，从而简化rocket的内核使其简单高效。
 
+
 ### 核心概念
 
 - **NameServer**
 
-  NameServer是整个rocket的”大脑“，是rocket的注册中心，须先启动NameServer再启动broker。broker在启动时会向所有NameServer注册，生产者在发送消息之前会先从NameServer中获取broker服务器地址列表，然后根据**
-  负载均衡**算法选择一台服务器发送消息。
+  NameServer是整个rocket的”大脑“，是rocket的注册中心，须先启动NameServer再启动broker。broker在启动时会向所有NameServer注册，生产者在发送消息之前会先从NameServer中获取broker服务器地址列表，然后根据**负载均衡**算法选择一台服务器发送消息。
 
 - **topic**
 
@@ -33,7 +34,7 @@
 
 - **tag**
 
-  消息标签，二级主题，用来进一步区分某个topic下的消息分类。
+  消息标签，消息二级分类，用来进一步区分某个topic下的消息分类。
 
 - **producer**
 
@@ -45,21 +46,20 @@
 
 - **message**
 
-  消息
+  消息载体
 
   ![rocketmq_architecture_1.png](/docs/middleware/img/rocketmq_architecture_1.png)
   <br>(图片来源: rocket官方github)
 
 ### push模型
 
+- 消息堆积
+- 重复消费
+- 负载策略
+- 延迟消息
+
 ### pull模型
 
-消息堆积
 
-重复消费
-
-负载策略
-
-延迟消息
 
 ### 源码分析
