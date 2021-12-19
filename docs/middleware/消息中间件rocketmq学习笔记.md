@@ -24,9 +24,14 @@
 
 ### 核心概念
 
+![rocketmq_architecture_1.png](/docs/middleware/img/rocketmq_architecture_1.png)
+<br>(图片来源: rocket官方github)
+
 - **NameServer**
 
-  NameServer是整个rocket的”大脑“，是rocket的注册中心，须先启动NameServer再启动broker。broker在启动时会向所有NameServer注册，生产者在发送消息之前会先从NameServer中获取broker服务器地址列表，然后根据**负载均衡**算法选择一台服务器发送消息。
+  NameServer是整个rocket的”大脑“，是rocket的注册中心，须先启动NameServer再启动broker。
+  broker在启动时会向所有NameServer注册，生产者在发送消息之前会先从NameServer中获取broker服务器地址列表，
+  然后根据**负载均衡**算法选择一台服务器发送消息。需要注意的是，多个Namesrv实例组成集群，**但相互独立**，**没有信息交换**。
 
 - **topic**
 
@@ -48,8 +53,6 @@
 
   消息载体
 
-  ![rocketmq_architecture_1.png](/docs/middleware/img/rocketmq_architecture_1.png)
-  <br>(图片来源: rocket官方github)
 
 ### push模型
 
