@@ -1,7 +1,8 @@
 ## MongoDB学习笔记
 
+> - [Mongo官方文档中文版](https://docs.mongoing.com/)
+> - [DB-Engines-Ranking](https://db-engines.com/en/ranking)
 > - 基于磁盘还是基于内存？
->
 > - 与redis的比较?
 
 ### 特性
