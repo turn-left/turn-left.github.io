@@ -24,7 +24,7 @@
 
 ### 核心概念
 
-![rocketmq_architecture_1.png](/docs/middleware/img/rocketmq_architecture_1.png)
+![rocketmq_architecture_1.png](/docs/middleware/img/rocketmq_architecture_3.png)
 <br>(图片来源: rocket官方github)
 
 - **NameServer**
