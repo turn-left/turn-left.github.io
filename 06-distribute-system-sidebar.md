@@ -2,31 +2,38 @@
 
 ***
 
-#### 系统间通信
+[comment]: <> (#### 系统间通信)
 
-- [HTTP协议原理及java实现](docs/distribute/HTTP协议原理及java实现.md)
+- [系统间通信-HTTP协议原理及实践](docs/distribute/系统间通信-HTTP协议原理及实践.md)
 
-#### 幂等性设计
+- [java程序幂等性设计实践.md](/docs/distribute/java程序幂等性设计实践.md)
 
-#### 分布式事务
+[comment]: <> (#### 分布式事务)
 
-#### 分布式缓存
+- [分布式事务解决方案分析](/docs/distribute/分布式事务解决方案分析.md)
+
+  [comment]: <> (#### 分布式缓存)
 
 - [redis作为分布式缓存方案分析](docs/distribute/redis作为分布式缓存方案分析.md)
 
-#### 分布式锁
+[comment]: <> (#### 分布式锁)
 
-#### 全局ID解决方案
+- [分布式锁实现方案分析](/docs/distribute/分布式锁实现方案分析.md)
 
-#### 一致性hash
+[comment]: <> (#### 全局ID解决方案)
 
-#### 负载均衡
+- [分布式系统全局ID解决方案实践](/docs/distribute/分布式系统全局ID解决方案实践.md)
 
-<br>
+[comment]: <> (#### 一致性hash)
 
-## 设计模式
+[comment]: <> (#### 负载均衡)
 
-***
+[comment]: <> (场景设计)
+
+- [支付系统设计之alipay接入](/docs/distribute/支付系统设计之alipay接入.md)
+- [令牌桶算法做流量控制实践](/docs/distribute/令牌桶算法做流量控制实践.md)
+
+[comment]: <> (## 设计模式)
 
 - 工厂模式
 - 委托模式
@@ -36,23 +43,32 @@
 - 观察者模式
 - 责任链模式
 
-## UML
+[comment]: <> (## UML)
 
-***
+[comment]: <> (***)
 
-- 时序图
-- 类图
+[comment]: <> (- 时序图)
 
-## MySQL
+[comment]: <> (- 类图)
 
-***
+[comment]: <> (## MySQL)
 
-- 数据库设计
-- SQL编写及执行原理
-- 执行计划分析
-- 索引实践及原理
-- MySQL诊断技术
-- 读写分离方案
-- 分库分表方案
-- sharding JDBC
-- MyCat
+[comment]: <> (***)
+
+[comment]: <> (- 数据库设计)
+
+[comment]: <> (- SQL编写及执行原理)
+
+[comment]: <> (- 执行计划分析)
+
+[comment]: <> (- 索引实践及原理)
+
+[comment]: <> (- MySQL诊断技术)
+
+[comment]: <> (- 读写分离方案)
+
+[comment]: <> (- 分库分表方案)
+
+[comment]: <> (- sharding JDBC)
+
+[comment]: <> (- MyCat)
