@@ -1,71 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" class="borderbox">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="manifest.json" />
-    <link rel="icon" href="dist/logo.png" />
-    <title>marknote</title>
-    <link rel="stylesheet" href="dist/index.css" />
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="icon" href="dist/logo.png"/>
+  <title>marknote</title>
+  <link rel="stylesheet" href="dist/index.css"/>
 
-    <style>
-        a,
-        a:visited,
-        a:active,
-        a:hover {
-         text-decoration: none !important;
-        /* 设置文章里链接的样式 */
-        .content a::before {
-         content: '🔗';
-         margin-right: 2px;
-        /* 设置侧栏里链接的样式 */
-        .sidebar a::before {
-         content: '🔗';
-         margin-right: 2px;
-        }
-</style>
-  </head>
-  <body style="--top-nav-bgc: var(--color-ryf); --content-bgc: var(--color-ryf);">
-    <div class="top-nav f">
-      <div class="f-fixed sidebar-switch">
-        <div class="clickable sidebar-control"></div>
-      </div>
-      <div class="f-auto">
-        <a href="/#/README.md" class="site-name">Marknote</a>
-      </div>
-      <div class="f-fixed links">
-        <!-- 顶部右则导航 -->
-        <a href="/#/docs/java-core/java核心总览.md?sidebar=01-java-core-sidebar.md">java-core</a>
-        <a href="/#/docs/concurrent/concurrent-01.md?sidebar=02-concurrent-sidebar.md">并发编程</a>
-        <a href="/#/docs/jvm-shoot/jvm-blog-01.md?sidebar=03-jvm-sidebar.md">java虚拟机</a>
-        <a href="/#/docs/troubleshooting/java应用线上故障诊断思路.md?sidebar=09-troubleshooting-sidebar.md">troubleshooting</a>
-        <a href="/#/docs/spring/1.java动态代理技术分析.md?sidebar=04-spring-sidebar.md">Spring</a>
-        <a href="/#/docs/springcloud/低代码开发平台jeecg-boot分析.md?sidebar=05-spring-cloud-sidebar.md">微服务</a>
-        <a href="/#/docs/distribute/HTTP协议原理及java实现.md?sidebar=06-distribute-system-sidebar.md">系统设计</a>
-        <a href="/#/docs/middleware/消息中间件rocketmq学习笔记.md?sidebar=07-middleware-sidebar.md">中间件</a>
-        <a href="/#/docs/apm-tracer/apm-tracer-01.md?sidebar=08-apm-tracer-sidebar.md">链路追踪</a>
-        <a href="/#/docs/algorithm/algorithm-01.md?sidebar=10-algorithm-sidebar.md">算法设计</a>
-        <a href="/#/docs/tools/git常用命令整理.md?sidebar=11-tools-sidebar.md">工具篇</a>
-        <a href="https://github.com/turn-left" target="_blank">GitHub</a>
-      </div>
-    </div>
+  <style>
+    a, a:visited, a:active, a:hover {
+      text-decoration: none !important;
+    }
 
-    <div class="container f">
-      <!-- 侧栏 -->
-      <aside id="sidebar" class="f-fixed sidebar"></aside>
-      <div class="f-auto content-wrapper">
-        <!-- 文章 -->
-        <article id="content" class="markdown-body content"></article>
+    /* 设置文章里链接的样式 */
+    .content a::before {
+      content: '🔗';
+      margin-right: 2px;
+    }
 
-        <div class="back-to-top"><a href="javascript:;" class="button" title="回到顶部"></a></div>
-      </div>
-    </div>
+    /* 设置侧栏里链接的样式 */
+    .sidebar a::before {
+      content: '🔗';
+      margin-right: 2px;
+    }
+  </style>
+</head>
+<body style="--top-nav-bgc: var(--color-ryf); --content-bgc: var(--color-ryf);">
+<div class="top-nav f">
+  <div class="f-fixed sidebar-switch">
+    <div class="clickable sidebar-control"></div>
+  </div>
+  <div class="f-auto">
+    <a href="/#/README.md" class="site-name">Marknote</a>
+  </div>
+  <div class="f-fixed links">
+    <!-- 顶部右则导航 -->
+    <a href="/#/docs/java-core/java核心总览.md?sidebar=01-java-core-sidebar.md">java-core</a>
+    <a href="/#/docs/concurrent/concurrent-01.md?sidebar=02-concurrent-sidebar.md">并发编程</a>
+    <a href="/#/docs/jvm-shoot/jvm-blog-01.md?sidebar=03-jvm-sidebar.md">java虚拟机</a>
+    <a href="/#/docs/troubleshooting/java应用线上故障诊断思路.md?sidebar=09-troubleshooting-sidebar.md">troubleshooting</a>
+    <a href="/#/docs/spring/1.java动态代理技术分析.md?sidebar=04-spring-sidebar.md">Spring</a>
+    <a href="/#/docs/springcloud/低代码开发平台jeecg-boot分析.md?sidebar=05-spring-cloud-sidebar.md">微服务</a>
+    <a href="/#/docs/distribute/HTTP协议原理及java实现.md?sidebar=06-distribute-system-sidebar.md">系统设计</a>
+    <a href="/#/docs/middleware/消息中间件rocketmq学习笔记.md?sidebar=07-middleware-sidebar.md">中间件</a>
+    <a href="/#/docs/apm-tracer/apm-tracer-01.md?sidebar=08-apm-tracer-sidebar.md">链路追踪</a>
+    <a href="/#/docs/algorithm/algorithm-01.md?sidebar=10-algorithm-sidebar.md">算法设计</a>
+    <a href="/#/docs/tools/git常用命令整理.md?sidebar=11-tools-sidebar.md">工具篇</a>
+    <a href="https://github.com/turn-left" target="_blank">GitHub</a>
+  </div>
+</div>
 
-    <!-- 原文连接，打印时才会显示 -->
-    <div class="permalink"></div>
+<div class="container f">
+  <!-- 侧栏 -->
+  <aside id="sidebar" class="f-fixed sidebar"></aside>
+  <div class="f-auto content-wrapper">
+    <!-- 文章 -->
+    <article id="content" class="markdown-body content"></article>
 
-    <script>
+    <div class="back-to-top"><a href="javascript:;" class="button" title="回到顶部"></a></div>
+  </div>
+</div>
+
+<!-- 原文连接，打印时才会显示 -->
+<div class="permalink"></div>
+
+<script>
       // 配置
       window.marknoteConfig = {
         // 网站名称
@@ -73,7 +74,10 @@
         // 网站基本地址，以 `/` 结尾
 <!--        basePath: '/marknote/',-->
       };
-    </script>
-    <script src="dist/index.js"></script>
-  </body>
+
+
+
+</script>
+<script src="dist/index.js"></script>
+</body>
 </html>
