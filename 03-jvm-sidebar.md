@@ -18,8 +18,6 @@
 - 基于最大停顿时长
 - JVM常用参数
 
-***
-
 ## troubleshooting
 
 ***
