@@ -8,31 +8,13 @@
   <link rel="icon" href="dist/logo.png"/>
   <title>marknote</title>
   <link rel="stylesheet" href="dist/index.css"/>
-
-  <style>
-    a, a:visited, a:active, a:hover {
-      text-decoration: none !important;
-    }
-
-    /* 设置文章里链接的样式 */
-    .content a::before {
-      content: '🔗';
-      margin-right: 2px;
-    }
-
-    /* 设置侧栏里链接的样式 */
-    .sidebar a::before {
-      content: '🔗';
-      margin-right: 2px;
-    }
-  </style>
 </head>
 <body style="--top-nav-bgc: var(--color-ryf); --content-bgc: var(--color-ryf);">
 <div class="top-nav f">
   <div class="f-fixed sidebar-switch">
     <div class="clickable sidebar-control"></div>
   </div>
-  <div class="f-auto">
+  <div class="f-fixed">
     <a href="/#/README.md" class="site-name">Marknote</a>
   </div>
   <div class="f-fixed links">
