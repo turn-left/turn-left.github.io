@@ -1,3 +1,7 @@
 ## 支付系统设计之alipay接入
 
-- [支付宝文档中心](https://opendocs.alipay.com/open/00a0ut)
+- [支付宝沙箱环境](https://open.alipay.com/platform/appDaily.htm)
+- [沙箱-当面付接入](https://open.alipay.com/platform/appDaily.htm?tab=info)
+- [支付宝支付能力接入文档](https://opendocs.alipay.com/open/01zuoj)
+- [alipay-sdk-java-all](https://github.com/alipay/alipay-sdk-java-all)
+- [二维码指南及如何扫描二维码](二维码指南及如何扫描二维码)
