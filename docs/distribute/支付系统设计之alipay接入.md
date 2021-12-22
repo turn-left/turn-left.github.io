@@ -5,3 +5,4 @@
 - [支付宝支付能力接入文档](https://opendocs.alipay.com/open/01zuoj)
 - [alipay-sdk-java-all](https://github.com/alipay/alipay-sdk-java-all)
 - [二维码指南及如何扫描二维码](二维码指南及如何扫描二维码)
+- [支付宝二维码生成工具](https://opensupport.alipay.com/support/tools/convert/qrcode?ant_source=opendoc)
