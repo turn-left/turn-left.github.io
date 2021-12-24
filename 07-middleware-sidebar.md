@@ -21,3 +21,26 @@
 - flink
 - HBase
 - Hive
+
+
+***
+
+[comment]: <> (## MySQL)
+
+[comment]: <> (- 数据库设计)
+
+[comment]: <> (- SQL编写及执行原理)
+
+[comment]: <> (- 执行计划分析)
+
+[comment]: <> (- 索引实践及原理)
+
+[comment]: <> (- MySQL诊断技术)
+
+[comment]: <> (- 读写分离方案)
+
+[comment]: <> (- 分库分表方案)
+
+[comment]: <> (- sharding JDBC)
+
+[comment]: <> (- MyCat)
