@@ -8,4 +8,4 @@
 
 ### 微服务部署方案
 
-![jeecg-boot微服务部署架构图.png](/docs/springcloud/img/jeecg-boot微服务部署架构图.png)
+![jeecg-boot微服务部署架构图.png](/docs/distribute/img/jeecg-boot微服务部署架构图.png)
