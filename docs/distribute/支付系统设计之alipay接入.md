@@ -13,3 +13,4 @@
 - [alipay-sdk-java-all](https://github.com/alipay/alipay-sdk-java-all)
 - [二维码指南及如何扫描二维码](https://www.kaspersky.com.cn/resource-center/definitions/what-is-a-qr-code-how-to-scan)
 - [支付宝二维码生成工具](https://opensupport.alipay.com/support/tools/convert/qrcode?ant_source=opendoc)
+- [关于第三方支付，看这篇文章就够了](http://www.ityouknow.com/payment/2019/03/30/third-payment.html)
