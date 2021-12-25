@@ -4,7 +4,7 @@
 
 [comment]: <> (#### 系统间通信)
 
-- [系统间通信-HTTP协议原理及实践](docs/distribute/系统间通信之HTTP协议原理实践.md)
+- [系统间通信之HTTP协议原理及实践](docs/distribute/系统间通信之HTTP协议原理实践.md)
 
 - [java程序幂等性设计实践](/docs/distribute/java程序幂等性设计实践.md)
 
