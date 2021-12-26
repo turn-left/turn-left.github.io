@@ -28,13 +28,35 @@
 5. **商户应用发布**
 6. **商户线上验证**
 
+#### [扫码支付接入](https://opendocs.alipay.com/open/194/106078)
+
+扫码支付适合有各类自助终端的商家，用户在自助终端通过扫码完成支付。当面付扫码支付采用 商家/系统服务商后台转发 方式接入，商家先预下单到商家后台，再请求到支付宝。
+
+- 扫码支付流程图
+
+![扫码支付流程.png](/docs/distribute/img/扫码支付流程.png)
+
+- 扫码支付接口时序
+
+![扫码支付接口调用时序.png](/docs/distribute/img/扫码支付接口调用时序.png)
+
+#### [付款码支付接入](https://opendocs.alipay.com/open/194/106039)
+
+商户/系统商后台转发方式接入即商家收银台先向商家后台发起收款请求，商家后台再将请求转发给支付宝后台。建议由多家门店的商户或大型商户这类有能力开发自有后台的商户采用。
+
+- 付款码支付流程
+  ![付款码支付流程.png](/docs/distribute/img/付款码支付流程.png)
+
+- 付款码支付接口时序
+  ![付款码支付接口时序.png](/docs/distribute/img/付款码支付接口时序.png)
+
 ### 参考资源
 
 - [支付宝能力接入文档](https://opendocs.alipay.com/open/01zuoj)
 - [支付宝沙箱环境](https://open.alipay.com/platform/appDaily.htm)
 - [支付宝沙箱环境文档](https://opendocs.alipay.com/common/02kkv7)
 - [沙箱环境当面付接入](https://open.alipay.com/platform/appDaily.htm?tab=info)
-- [当面付接入流程](https://opensupport.alipay.com/support/helpcenter/99/201602490909?ant_source=opendoc_recommend)  
+- [当面付接入流程](https://opensupport.alipay.com/support/helpcenter/99/201602490909?ant_source=opendoc_recommend)
 - [alipay-sdk-java-all](https://github.com/alipay/alipay-sdk-java-all)
 - [二维码指南及如何扫描二维码](https://www.kaspersky.com.cn/resource-center/definitions/what-is-a-qr-code-how-to-scan)
 - [支付宝二维码生成工具](https://opensupport.alipay.com/support/tools/convert/qrcode?ant_source=opendoc)
