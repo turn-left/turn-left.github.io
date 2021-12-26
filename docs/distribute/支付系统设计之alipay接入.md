@@ -50,6 +50,20 @@
 - 付款码支付接口时序
   ![付款码支付接口时序.png](/docs/distribute/img/付款码支付接口时序.png)
 
+- 核心交互接口
+  <br>商户后台在接入支付宝的全流程中涉及几个核心接口,涵盖
+  [预付单](https://opendocs.alipay.com/open/02ekfg?scene=19)
+  、
+  [交易查询](https://opendocs.alipay.com/open/02ekfh?scene=23)
+  、
+  [交易撤销](https://opendocs.alipay.com/open/02ekfi)
+  、
+  [退款](https://opendocs.alipay.com/open/02ekfk)
+  、
+  [对账](https://opendocs.alipay.com/open/02ekfm)
+  等环节。
+  <br>![核心交互接口.png](/docs/distribute/img/核心交互接口.png)
+
 ### 参考资源
 
 - [支付宝能力接入文档](https://opendocs.alipay.com/open/01zuoj)
