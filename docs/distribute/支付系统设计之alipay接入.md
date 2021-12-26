@@ -21,12 +21,12 @@
 支付宝提供了[沙箱环境](https://open.alipay.com/platform/appDaily.htm) 以供商户侧开发与调试。沙箱环境不同于正式环境，门槛低，无需签约等繁琐步骤，可以直接下载demo到本地调试接口。
 这部分以当面付产品为例，探讨商户后台从无到有，接入alipay的步骤。
 
-- [沙箱环境调试](https://opendocs.alipay.com/common/02kkv7)
-- 接口开发与调试
-- 应用创建及配置
-- 商户签约
-- 应用发布
-- 线上验证
+1. [沙箱环境调试](https://opendocs.alipay.com/common/02kkv7)
+2. 接口开发与调试
+3. 应用创建及配置
+4. [商户接入准备](https://opendocs.alipay.com/open/01csp3)
+5. 商户应用发布
+6. 商户线上验证
 
 ### 参考资源
 
