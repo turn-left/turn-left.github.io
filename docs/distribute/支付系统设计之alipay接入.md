@@ -2,7 +2,7 @@
 
 ### 支付宝支付产品
 
-![支付宝 支付产品.png](/docs/distribute/img/支付宝支付产品.png)
+![支付宝支付产品.png](/docs/distribute/img/支付宝支付产品.png)
 
 ### 最佳架构
 
