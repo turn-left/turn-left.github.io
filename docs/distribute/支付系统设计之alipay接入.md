@@ -19,7 +19,7 @@
 ### 商户接入流程
 
 支付宝提供了[沙箱环境](https://open.alipay.com/platform/appDaily.htm) 以供商户侧开发与调试。沙箱环境不同于正式环境，门槛低，无需签约等繁琐步骤，可以直接下载demo到本地调试接口。
-这部分以当面付产品为例，探讨商户后台从无到有，接入alipay的步骤。
+<br>这部分以当面付产品为例，探讨商户后台从无到有，接入alipay的步骤。
 
 1. [**沙箱环境调试**](https://opendocs.alipay.com/common/02kkv7)
 2. **接口开发与调试**
