@@ -6,6 +6,7 @@
 
 - [系统间通信之HTTP协议原理及实践](docs/distribute/系统间通信之HTTP协议原理实践.md)
 
+
 - [java程序幂等性设计实践](/docs/distribute/java程序幂等性设计实践.md)
 
 [comment]: <> (#### 分布式事务)
@@ -33,6 +34,7 @@
 [comment]: <> (场景设计)
 
 - [支付系统设计之alipay接入](/docs/distribute/支付系统设计之alipay接入.md)
+  
 - [令牌桶算法做流量控制实践](/docs/distribute/令牌桶算法做流量控制实践.md)
 
 [comment]: <> (## 案例分析)
