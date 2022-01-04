@@ -3,3 +3,4 @@
 - [typora使用教程](/docs/tools/typora使用教程.md)
 - [jvm虚拟机字节码指令表](/docs/tools/jvm虚拟机字节码指令表.md)
 - [markdown语法整理](/docs/tools/markdown语法整理.md)
+- [测试、集成等领域最好的Java工具](/docs/tools/收集整理：测试、集成等领域最好的Java工具.md)
