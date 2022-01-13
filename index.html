@@ -8,6 +8,7 @@
   <link rel="icon" href="dist/logo.png"/>
   <title>marknote</title>
   <link rel="stylesheet" href="dist/index.css"/>
+  <link rel="stylesheet" href="dist/prism.css" />
 </head>
 <body style="--top-nav-bgc: var(--color-ryf); --content-bgc: var(--color-ryf);">
 <div class="top-nav f">
@@ -34,17 +35,16 @@
   </div>
 </div>
 
-<div class="container f">
-  <!-- 侧栏 -->
-  <aside id="sidebar" class="f-fixed sidebar"></aside>
-  <div class="f-auto content-wrapper">
-    <!-- 文章 -->
-    <div style="width: 100%;">
-      <article id="content" class="markdown-body content" style="margin: 0 auto; max-width: 85%;"></article>
+    <div class="container f">
+      <!-- 侧栏 -->
+      <aside id="sidebar" class="f-fixed sidebar"></aside>
+      <div class="f-auto content-wrapper">
+        <!-- 文章 -->
+        <article id="content" class="markdown-body content"></article>
+
+        <div class="back-to-top"><a href="javascript:;" class="button" title="回到顶部"></a></div>
       </div>
-    <div class="back-to-top"><a href="javascript:;" class="button" title="回到顶部"></a></div>
-  </div>
-</div>
+    </div>
 
 <!-- 原文连接，打印时才会显示 -->
 <div class="permalink"></div>
@@ -57,10 +57,8 @@
         // 网站基本地址，以 `/` 结尾
 <!--        basePath: '/marknote/',-->
       };
-
-
-
-</script>
-<script src="dist/index.js"></script>
-</body>
+    </script>
+    <script src="dist/index.js"></script>
+    <script src="dist/prism.js"></script>
+  </body>
 </html>
