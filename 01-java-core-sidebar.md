@@ -8,7 +8,8 @@
 - [关于java8模块](docs/java-core/java核心总览.md)
 - [java体系学习资料](docs/java-core/java体系学习资料汇总.md)
 - [java内部类最佳实践](docs/java-core/java内部类最佳实践.md) 
-- [java动态代理实战](docs/java-core/Java动态代理实战.md)
+- [JDK动态代理实战分析](docs/java-core/Java动态代理实战.md)
+- [CGlib动态代理实战分析](docs/java-core/动态代理CGlib实战分析.md)
 - 字符串操作最佳实践
 - 关于字符串操作API及源码
 - 关于特殊字符转译的探讨

@@ -64,7 +64,7 @@ Proxy.newProxyInstance
                                 proxyClassFile, 0, proxyClassFile.length);
 ```
 
-动态代理 就是在执行代码的过程中，动态生成了 代理类 Class 的字节码`byte[]`，然后通过defineClass0 加载到jvm 中。
+动态代理 就是在执行代码的过程中，动态生成了 代理类 Class 的字节码`byte[]`，然后通过defineClass0 加载到jvm 中。
 
 ```java
 public class Proxy implements java.io.Serializable {
