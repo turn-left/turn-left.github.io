@@ -83,4 +83,5 @@ public class CgLibUtil {
 
 - [总算有人把动态代理、CGlib、AOP都说清楚了！](https://cloud.tencent.com/developer/article/1461796)
 - [通俗的方式分析CGLib动态代理](https://blog.csdn.net/qq_36756682/article/details/108422693)
+- [CGLib动态代理原理](https://blog.csdn.net/wangnanwlw/article/details/112309881)
 
