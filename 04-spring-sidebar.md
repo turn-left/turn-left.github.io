@@ -17,4 +17,5 @@
 - [Spring整合Mybatis源码分析](docs/spring/Spring整合Mybatis源码分析.md)
 - [SpringMVC核心流程源码分析](docs/spring/SpringMVC源码分析.md)
 - [Spring异常处理机制分析](docs/spring/Spring异常处理机制分析.md)
-- Spring-缓存原理源码分析
+
+[comment]: <> (- Spring-缓存原理源码分析)
