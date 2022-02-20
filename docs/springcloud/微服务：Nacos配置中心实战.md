@@ -37,10 +37,37 @@ startup.cmd -m standalone
 5. 访问控制台
 
 - 本地默认控制台地址  http://localhost:8848/nacos/
-
 - 默认用户 nacos/nacos
 
+#### Nacos源码启动
 
+1. [源码下载](https://github.com/alibaba/nacos)
+
+2. 添加VM选项
+
+```properties
+-Dnacos.standalone=true
+-Dnacos.home=D:\source2021\nacos\distribution
+```
+
+3. 配置数据库连接
+
+```properties
+### If use MySQL as datasource:
+ spring.datasource.platform=mysql
+
+### Count of DB:
+ db.num=1
+
+### Connect URL of DB:
+ db.url.0=jdbc:mysql://127.0.0.1:3306/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+ db.user.0=root
+ db.password.0=root
+```
+
+4. 启动**console**模块
+
+![image-20220220130732739](/docs/springcloud/img/image-20220220130732739.png)
 
 #### Nacos领域模型
 
@@ -48,14 +75,6 @@ startup.cmd -m standalone
 - group
 - cluster
 - version
-
-
-
-
-
-
-
-
 
 #### 参考资料
 
