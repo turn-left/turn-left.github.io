@@ -29,7 +29,7 @@
 
 [comment]: <> (- 关于URL、Resource API)
 
-- [深入分析抽象类及default接口](docs/java-core/深入分析接口、抽象类、defaul方法.md)
+[//]: # (- [深入分析抽象类及default接口]&#40;docs/java-core/深入分析接口、抽象类、defaul方法.md&#41;)
 
 [comment]: <> (### 泛型)
 
